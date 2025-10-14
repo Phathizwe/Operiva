@@ -18,11 +18,11 @@ const db = admin.firestore();
 
 // --- 2. SEED DATA DEFINITIONS ---
 const libraries = [
-  { id: 'cash', outcome: 'Cash', title: 'Cash Acceleration', description: 'Ready-to-use templates for invoicing, collections, debtor management, and cash flow optimization.', artifactCount: 4, trackCount: 2 },
-  { id: 'compliance', outcome: 'Compliance', title: 'Compliance & Governance', description: 'Step-by-step packs for CIPC, SARS, POPIA, and COIDA, plus policy bundles and filing calendars.', artifactCount: 0, trackCount: 0 },
+  { id: 'cash', outcome: 'Cash', title: 'Cash Acceleration', description: 'Strategic financial management tools for cash flow forecasting, cost control, and securing funding readiness to overcome the financial illiteracy gap.', artifactCount: 4, trackCount: 2 },
+  { id: 'compliance', outcome: 'Compliance', title: 'Compliance & Governance', description: 'Frameworks for POPIA, CIPC, and SARS compliance, plus proactive risk mitigation strategies to avoid costly fines and legal disputes.', artifactCount: 0, trackCount: 0 },
   { id: 'customers', outcome: 'Customers', title: 'Customers & Growth', description: 'Go-to-market playbooks, campaign briefs, content calendars, and proposal decks to win and retain customers.', artifactCount: 0, trackCount: 0 },
-  { id: 'control', outcome: 'Control', title: 'Operations & Control', description: 'SOP templates, inventory spreadsheets, reorder point calculators, and supplier scorecards for efficient operations.', artifactCount: 0, trackCount: 0 },
-  { id: 'capital', outcome: 'Capital', title: 'Capital Readiness', description: 'Pitch deck and data room templates, KPI dashboards, and funding application checklists to secure investment.', artifactCount: 0, trackCount: 0 },
+  { id: 'control', outcome: 'Control', title: 'Operations & Control', description: 'Resilience kits for load shedding, SOP templates, and supply chain management tools to navigate logistical bottlenecks and maintain business continuity.', artifactCount: 0, trackCount: 0 },
+  { id: 'human-capital', outcome: 'Human Capital', title: 'Human Capital & Leadership', description: 'Tools and guides for owner-manager development, talent retention, and building organizational capabilities, addressing the "owner-manager bottleneck".', artifactCount: 8, trackCount: 1 },
 ];
 
 const artifacts = [

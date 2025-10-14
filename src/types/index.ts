@@ -29,7 +29,7 @@ export interface ProtectedRouteProps {
 // Operiva Content Model Types
 
 // 1. Core Outcomes (Libraries)
-export type Outcome = 'Cash' | 'Compliance' | 'Customers' | 'Control' | 'Capital';
+export type Outcome = 'Cash' | 'Compliance' | 'Customers' | 'Control' | 'Human Capital';
 
 // 2. Artifact Types
 export type ArtifactType = 'Template' | 'Checklist' | 'SOP' | 'Calculator' | 'Guide' | 'Research';
