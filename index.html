@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Operiva - A modern SaaS platform for project management, team collaboration, and analytics" />
+    <title>Operiva - Streamline Your Workflow</title>
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/src/index.css" as="style" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Preload critical fonts if you're using any -->
+    <!-- <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin /> -->
+    
+    <!-- Theme color for browser UI -->
+    <meta name="theme-color" content="#4F46E5" />
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Operiva - Streamline Your Workflow" />
+    <meta property="og:description" content="A modern SaaS platform for project management, team collaboration, and analytics" />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:url" content="https://operiva.com" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Operiva - Streamline Your Workflow" />
+    <meta name="twitter:description" content="A modern SaaS platform for project management, team collaboration, and analytics" />
+    <meta name="twitter:image" content="/og-image.png" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Inline critical CSS for faster rendering -->
+    <script>
+      // Check for dark mode preference
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+  </body>
+</html>
