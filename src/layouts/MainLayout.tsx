@@ -22,7 +22,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
                     <Link to="/">
                       <img
                         className="h-8 w-auto"
-                        src="/logo.svg"
+                        src="/logo.png"
                         alt="Operiva"
                       />
                     </Link>
