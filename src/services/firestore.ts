@@ -74,6 +74,31 @@ export const getArtifactsByOutcome = async (outcome: Outcome): Promise<Artifact[
 };
 
 // --- Tracks Operations ---
+	
+	/**
+	 * Fetches a single track by its ID.
+	 * @param id The ID of the track.
+	 * @returns A promise that resolves to the Track object or null.
+	 */
+	export const getTrack = async (id: string): Promise<Track | null> => {
+	  const docRef = doc(tracksCol, id);
+	  const docSnap = await getDoc(docRef);
+	  if (docSnap.exists()) {
+	    return { ...docSnap.data(), id: docSnap.id };
+	  }
+	  return null;
+	};
+	
+	/**
+	 * Fetches tracks filtered by a specific outcome.
+	 * @param outcome The core outcome to filter by.
+	 * @returns A promise that resolves to an array of Track objects.
+	 */
+	export const getTracksByOutcome = async (outcome: Outcome): Promise<Track[]> => {
+	  const q = query(tracksCol, where('outcome', '==', outcome));
+	  const snapshot = await getDocs(q as Query<Track>);
+	  return snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+	};
 
 /**
  * Fetches a limited number of featured tracks for the homepage.
@@ -82,8 +107,8 @@ export const getArtifactsByOutcome = async (outcome: Outcome): Promise<Artifact[
  */
 export const getFeaturedTracks = async (count: number = 3): Promise<Track[]> => {
   // Assuming 'isFeatured' field will be added to Track documents for selection
-  // For now, we'll just limit the first few
-  const q = query(tracksCol, limit(count));
+// Assuming 'isFeatured' field will be added to Track documents for selection
+	  const q = query(tracksCol, where('isFeatured', '==', true), limit(count));
   const snapshot = await getDocs(q as Query<Track>);
   return snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
 };

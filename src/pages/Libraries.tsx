@@ -4,14 +4,8 @@ import { Library } from '../types';
 import { getLibraries } from '../services/firestore';
 import LibraryCard from '../components/LibraryCard';
 
-// Seed data for the Libraries page until Firestore is fully populated
-const initialLibraries: Library[] = [
-  { id: '1', outcome: 'Cash', title: 'Cash Acceleration', description: 'Ready-to-use templates for invoicing, collections, debtor management, and cash flow optimization.', artifactCount: 12, trackCount: 3 },
-  { id: '2', outcome: 'Compliance', title: 'Compliance & Governance', description: 'Step-by-step packs for CIPC, SARS, POPIA, and COIDA, plus policy bundles and filing calendars.', artifactCount: 18, trackCount: 4 },
-  { id: '3', outcome: 'Customers', title: 'Customers & Growth', description: 'Go-to-market playbooks, campaign briefs, content calendars, and proposal decks to win and retain customers.', artifactCount: 10, trackCount: 2 },
-  { id: '4', outcome: 'Control', title: 'Operations & Control', description: 'SOP templates, inventory spreadsheets, reorder point calculators, and supplier scorecards for efficient operations.', artifactCount: 15, trackCount: 3 },
-  { id: '5', outcome: 'Capital', title: 'Capital Readiness', description: 'Pitch deck and data room templates, KPI dashboards, and funding application checklists to secure investment.', artifactCount: 8, trackCount: 1 },
-];
+// No longer needed, using live data from Firestore
+// const initialLibraries: Library[] = [...];
 
 export default function Libraries() {
   const [libraries, setLibraries] = useState<Library[]>([]);
@@ -22,13 +16,12 @@ export default function Libraries() {
     const fetchLibraries = async () => {
       try {
         // In a real app, we would use getLibraries() from firestore.ts
-        // const data = await getLibraries();
-        // For now, we use seed data until the database is populated
-        setLibraries(initialLibraries);
+        const data = await getLibraries();
+        setLibraries(data);
       } catch (err) {
         console.error("Failed to fetch libraries:", err);
         setError("Failed to load libraries. Please try again later.");
-        setLibraries(initialLibraries); // Fallback to seed data
+        // setLibraries(initialLibraries); // No fallback to seed data
       } finally {
         setLoading(false);
       }

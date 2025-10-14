@@ -12,7 +12,7 @@ import {
 import type { User as FirebaseUser } from 'firebase/auth';
 import { auth, db } from '../config/firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
-import type { User } from '../types';
+import type { User, MembershipStatus } from '../types';
 
 interface AuthContextType {
   currentUser: User | null;
@@ -24,6 +24,7 @@ interface AuthContextType {
   signInWithGoogle: () => Promise<void>;
   resetPassword: (email: string) => Promise<void>;
   clearError: () => void;
+  hasMembership: (required: 'Core' | 'Pro') => boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -47,12 +48,23 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const userRef = doc(db, 'users', firebaseUser.uid);
     const userSnap = await getDoc(userRef);
     
-    const userData = {
+    // Mock function to determine membership status
+    const getMockMembershipStatus = (email: string | null): MembershipStatus => {
+      if (email?.includes('pro.com')) return 'Pro';
+      if (email?.includes('core.com')) return 'Core';
+      if (email) return 'Free';
+      return 'None';
+    };
+
+    const membershipStatus = getMockMembershipStatus(firebaseUser.email);
+
+    const userData: User = {
       uid: firebaseUser.uid,
       email: firebaseUser.email,
       displayName: firebaseUser.displayName,
       photoURL: firebaseUser.photoURL,
       role: userSnap.exists() ? userSnap.data().role : 'user',
+      membershipStatus: membershipStatus,
     };
     
     return userData;
@@ -158,6 +170,23 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setError(null);
   };
 
+  // Helper function to check membership level
+  const hasMembership = (required: 'Core' | 'Pro'): boolean => {
+    if (!currentUser) return false;
+
+    const currentStatus = currentUser.membershipStatus;
+
+    if (required === 'Core') {
+      return currentStatus === 'Core' || currentStatus === 'Pro';
+    }
+
+    if (required === 'Pro') {
+      return currentStatus === 'Pro';
+    }
+
+    return false;
+  };
+
   // Listen for authentication state changes
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
@@ -188,6 +217,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     signInWithGoogle,
     resetPassword,
     clearError,
+    hasMembership,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

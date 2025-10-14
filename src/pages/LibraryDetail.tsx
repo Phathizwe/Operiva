@@ -5,18 +5,7 @@ import { Artifact, Track, Outcome } from '../types';
 import ArtifactCard from '../components/ArtifactCard';
 import { getArtifactsByOutcome, getFeaturedTracks } from '../services/firestore';
 
-// Seed data for artifacts and tracks (to be replaced by live Firestore data)
-const seedArtifacts: Artifact[] = [
-  { id: 'a1', title: 'VAT-Aware Invoice Template Pack', description: 'Professional, compliant invoice and quote templates for South African businesses.', outcome: 'Cash', type: 'Template', version: 'v1.2', lastUpdated: new Date(), downloadUrl: '#', fileType: 'DOCX', isPremium: false },
-  { id: 'a2', title: 'Debtor Dunning Email Scripts', description: 'A set of 5 email scripts for escalating late payments from 7 to 60 days overdue.', outcome: 'Cash', type: 'SOP', version: 'v2.0', lastUpdated: new Date(), downloadUrl: '#', fileType: 'GDoc', isPremium: true },
-  { id: 'a3', title: 'Collections SOP', description: 'A step-by-step operating procedure for managing the entire collections process in-house.', outcome: 'Cash', type: 'SOP', version: 'v1.0', lastUpdated: new Date(), downloadUrl: '#', fileType: 'PDF', isPremium: true },
-  { id: 'a4', title: 'Early-Payment Discount Calculator', description: 'Excel sheet to calculate the optimal discount rate to incentivize early payment.', outcome: 'Cash', type: 'Calculator', version: 'v1.0', lastUpdated: new Date(), downloadUrl: '#', fileType: 'XLSX', isPremium: false },
-];
-
-const seedTracks: Track[] = [
-  { id: 't1', title: 'Reduce DSO in 30 Days', description: 'A 7-step guided track to improve your Days Sales Outstanding metric.', outcome: 'Cash', durationMinutes: 90, artifactIds: ['a1', 'a2', 'a4'], isPremium: true },
-  { id: 't2', title: 'Collections Kickstart', description: 'A quick 60-minute track to implement a basic collections process.', outcome: 'Cash', durationMinutes: 60, artifactIds: ['a3'], isPremium: false },
-];
+// Seed data removed. Using live data from Firestore.
 
 export default function LibraryDetail() {
   const { outcome } = useParams<{ outcome: string }>();
@@ -33,15 +22,14 @@ export default function LibraryDetail() {
 
       try {
         // In a real app, we would use the Firestore functions
-        // const fetchedArtifacts = await getArtifactsByOutcome(outcome as Outcome);
-        // const fetchedTracks = await getFeaturedTracks(outcome as Outcome); // Assuming a filter by outcome
-        
-        // For now, filter seed data by the outcome parameter
-        const filteredArtifacts = seedArtifacts.filter(a => a.outcome.toLowerCase() === outcome.toLowerCase());
-        const filteredTracks = seedTracks.filter(t => t.outcome.toLowerCase() === outcome.toLowerCase());
+        const fetchedArtifacts = await getArtifactsByOutcome(outcome as Outcome);
+        // NOTE: getFeaturedTracks is a placeholder. We need a getTracksByOutcome function.
+        // For now, we'll use a placeholder function or assume getFeaturedTracks can be filtered.
+        // For this implementation, we'll assume a new function getTracksByOutcome exists in firestore.ts
+        const fetchedTracks = await getTracksByOutcome(outcome as Outcome); 
 
-        setArtifacts(filteredArtifacts);
-        setTracks(filteredTracks);
+        setArtifacts(fetchedArtifacts);
+        setTracks(fetchedTracks);
       } catch (err) {
         console.error(`Failed to fetch ${libraryTitle} content:`, err);
         setError(`Failed to load content for the ${libraryTitle} Library.`);

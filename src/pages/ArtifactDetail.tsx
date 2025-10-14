@@ -4,25 +4,13 @@ import { useParams, Link } from 'react-router-dom';
 import { Artifact } from '../types';
 import { getArtifact } from '../services/firestore';
 import { ArrowDownTrayIcon, LockClosedIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
+import { useAuth } from '../context/AuthContext';
 
-// Seed data for a single artifact (to be replaced by live Firestore data)
-const seedArtifact: Artifact = {
-  id: 'a1',
-  title: 'VAT-Aware Invoice Template Pack',
-  description: 'A comprehensive pack of professional, compliant invoice and quote templates for South African businesses. Includes versions for VAT-registered and non-VAT-registered entities. Editable in Microsoft Word and Google Docs.',
-  outcome: 'Cash',
-  type: 'Template',
-  sector: 'All',
-  version: 'v1.2',
-  lastUpdated: new Date(2025, 9, 10),
-  downloadUrl: '#',
-  fileType: 'DOCX',
-  expertReviewerId: 'e1',
-  isPremium: false,
-};
+// Seed data removed. Using live data from Firestore.
 
 export default function ArtifactDetail() {
   const { id } = useParams<{ id: string }>();
+  const { currentUser, hasMembership } = useAuth();
   const [artifact, setArtifact] = useState<Artifact | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -32,9 +20,12 @@ export default function ArtifactDetail() {
       if (!id) return;
 
       try {
-        // In a real app, we would use getArtifact(id)
-        // For now, we use seed data
-        setArtifact(seedArtifact);
+        const fetchedArtifact = await getArtifact(id);
+        if (fetchedArtifact) {
+          // Convert Firestore Timestamp to Date object for consistency
+          fetchedArtifact.lastUpdated = fetchedArtifact.lastUpdated.toDate();
+        }
+        setArtifact(fetchedArtifact);
       } catch (err) {
         console.error(`Failed to fetch artifact ${id}:`, err);
         setError(`Failed to load artifact details.`);
@@ -59,6 +50,7 @@ export default function ArtifactDetail() {
   }
 
   const isFree = !artifact.isPremium;
+  const isUnlocked = isFree || hasMembership('Core'); // Core membership unlocks all artifacts in this example
   const lastUpdatedDate = artifact.lastUpdated.toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' });
 
   return (
@@ -113,21 +105,24 @@ export default function ArtifactDetail() {
           </div>
 
           <div className="mt-8">
-            {isFree ? (
-              <button
+            {isUnlocked ? (
+              <a
+                href={artifact.downloadUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full flex items-center justify-center rounded-lg bg-operiva-blue px-6 py-3 text-base font-semibold text-white shadow-md hover:bg-operiva-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-operiva-blue"
               >
                 <ArrowDownTrayIcon className="h-5 w-5 mr-2" />
-                Download Now (Free)
-              </button>
+                Download Now ({isFree ? 'Free' : 'Core Access'})
+              </a>
             ) : (
               <div className="text-center p-6 rounded-lg bg-gray-50 dark:bg-gray-700 border border-amber-alert/50">
                 <LockClosedIcon className="h-8 w-8 text-amber-alert mx-auto" />
                 <p className="mt-2 text-lg font-semibold text-gray-900 dark:text-white">
-                  Unlock with Pro Membership
+                  Unlock with Core Membership
                 </p>
                 <p className="mt-1 text-gray-600 dark:text-gray-400">
-                  This premium artifact requires a Pro Membership or a one-time Pack purchase.
+                  This premium artifact requires a Core Membership or higher.
                 </p>
                 <Link
                   to="/pricing"
