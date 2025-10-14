@@ -11,6 +11,11 @@ const Login = lazy(() => import('./pages/Login'));
 const Signup = lazy(() => import('./pages/Signup'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Libraries = lazy(() => import('./pages/Libraries'));
+const LibraryDetail = lazy(() => import('./pages/LibraryDetail'));
+const ArtifactDetail = lazy(() => import('./pages/ArtifactDetail'));
+const TrackDetail = lazy(() => import('./pages/TrackDetail'));
+const Pricing = lazy(() => import('./pages/Pricing'));
+const ExpertCouncil = lazy(() => import('./pages/ExpertCouncil'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Loading fallback component
@@ -29,6 +34,8 @@ function App() {
             {/* Public routes */}
             <Route path="/" element={<Home />} />
             <Route path="/libraries" element={<MainLayout><Libraries /></MainLayout>} />
+            <Route path="/libraries/:outcome" element={<MainLayout><LibraryDetail /></MainLayout>} />
+            <Route path="/artifacts/:id" element={<MainLayout><ArtifactDetail /></MainLayout>} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             
@@ -46,11 +53,13 @@ function App() {
             
             {/* Redirect to home if path is empty */}
             <Route path="/features" element={<Navigate to="/libraries" replace />} />
-            <Route path="/pricing" element={<MainLayout><div>Pricing Page Placeholder</div></MainLayout>} />
+            <Route path="/pricing" element={<MainLayout><Pricing /></MainLayout>} />
             <Route path="/changelog" element={<MainLayout><div>Changelog Page Placeholder</div></MainLayout>} />
             <Route path="/about" element={<MainLayout><div>About Page Placeholder</div></MainLayout>} />
+            <Route path="/expert-council" element={<MainLayout><ExpertCouncil /></MainLayout>} />
             <Route path="/packs" element={<MainLayout><div>Packs Marketplace Placeholder</div></MainLayout>} />
             <Route path="/tracks" element={<MainLayout><div>Tracks Overview Placeholder</div></MainLayout>} />
+            <Route path="/tracks/:id" element={<MainLayout><TrackDetail /></MainLayout>} />
             <Route path="/profile" element={<MainLayout><div>Profile Page Placeholder</div></MainLayout>} />
             <Route path="/settings" element={<MainLayout><div>Settings Page Placeholder</div></MainLayout>} />
             

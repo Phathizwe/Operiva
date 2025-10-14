@@ -1,0 +1,114 @@
+// src/pages/LibraryDetail.tsx
+import { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { Artifact, Track, Outcome } from '../types';
+import ArtifactCard from '../components/ArtifactCard';
+import { getArtifactsByOutcome, getFeaturedTracks } from '../services/firestore';
+
+// Seed data for artifacts and tracks (to be replaced by live Firestore data)
+const seedArtifacts: Artifact[] = [
+  { id: 'a1', title: 'VAT-Aware Invoice Template Pack', description: 'Professional, compliant invoice and quote templates for South African businesses.', outcome: 'Cash', type: 'Template', version: 'v1.2', lastUpdated: new Date(), downloadUrl: '#', fileType: 'DOCX', isPremium: false },
+  { id: 'a2', title: 'Debtor Dunning Email Scripts', description: 'A set of 5 email scripts for escalating late payments from 7 to 60 days overdue.', outcome: 'Cash', type: 'SOP', version: 'v2.0', lastUpdated: new Date(), downloadUrl: '#', fileType: 'GDoc', isPremium: true },
+  { id: 'a3', title: 'Collections SOP', description: 'A step-by-step operating procedure for managing the entire collections process in-house.', outcome: 'Cash', type: 'SOP', version: 'v1.0', lastUpdated: new Date(), downloadUrl: '#', fileType: 'PDF', isPremium: true },
+  { id: 'a4', title: 'Early-Payment Discount Calculator', description: 'Excel sheet to calculate the optimal discount rate to incentivize early payment.', outcome: 'Cash', type: 'Calculator', version: 'v1.0', lastUpdated: new Date(), downloadUrl: '#', fileType: 'XLSX', isPremium: false },
+];
+
+const seedTracks: Track[] = [
+  { id: 't1', title: 'Reduce DSO in 30 Days', description: 'A 7-step guided track to improve your Days Sales Outstanding metric.', outcome: 'Cash', durationMinutes: 90, artifactIds: ['a1', 'a2', 'a4'], isPremium: true },
+  { id: 't2', title: 'Collections Kickstart', description: 'A quick 60-minute track to implement a basic collections process.', outcome: 'Cash', durationMinutes: 60, artifactIds: ['a3'], isPremium: false },
+];
+
+export default function LibraryDetail() {
+  const { outcome } = useParams<{ outcome: string }>();
+  const [artifacts, setArtifacts] = useState<Artifact[]>([]);
+  const [tracks, setTracks] = useState<Track[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const libraryTitle = outcome ? outcome.charAt(0).toUpperCase() + outcome.slice(1) : 'Library';
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      if (!outcome) return;
+
+      try {
+        // In a real app, we would use the Firestore functions
+        // const fetchedArtifacts = await getArtifactsByOutcome(outcome as Outcome);
+        // const fetchedTracks = await getFeaturedTracks(outcome as Outcome); // Assuming a filter by outcome
+        
+        // For now, filter seed data by the outcome parameter
+        const filteredArtifacts = seedArtifacts.filter(a => a.outcome.toLowerCase() === outcome.toLowerCase());
+        const filteredTracks = seedTracks.filter(t => t.outcome.toLowerCase() === outcome.toLowerCase());
+
+        setArtifacts(filteredArtifacts);
+        setTracks(filteredTracks);
+      } catch (err) {
+        console.error(`Failed to fetch ${libraryTitle} content:`, err);
+        setError(`Failed to load content for the ${libraryTitle} Library.`);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchContent();
+  }, [outcome, libraryTitle]);
+
+  if (loading) {
+    return <div className="text-center py-20 text-lg text-gray-500">Loading {libraryTitle} Library...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center py-20 text-lg text-red-500">{error}</div>;
+  }
+
+  return (
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+      <div className="text-center">
+        <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl font-display">
+          {libraryTitle} Acceleration Library
+        </h1>
+        <p className="mt-4 text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          All the templates, SOPs, and playbooks you need to master your {libraryTitle.toLowerCase()} outcomes.
+        </p>
+      </div>
+
+      {/* Tracks Section */}
+      <div className="mt-16">
+        <h2 className="text-3xl font-bold text-operiva-navy dark:text-white font-display border-b pb-2 mb-8">
+          Implementation Tracks ({tracks.length})
+        </h2>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {tracks.map((track) => (
+            <div key={track.id} className="rounded-lg bg-gray-50 dark:bg-gray-700 p-6 shadow-sm">
+              <h3 className="text-xl font-semibold text-operiva-blue dark:text-white">{track.title}</h3>
+              <p className="mt-2 text-gray-600 dark:text-gray-300">{track.description}</p>
+              <div className="mt-4 flex justify-between items-center">
+                <span className="text-sm text-gray-500 dark:text-gray-400">
+                  {track.artifactIds.length} Steps • {track.durationMinutes} min
+                </span>
+                <Link
+                  to={`/tracks/${track.id}`}
+                  className="text-sm font-medium text-progress-green hover:text-operiva-navy"
+                >
+                  Start Track &rarr;
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Artifacts Section */}
+      <div className="mt-16">
+        <h2 className="text-3xl font-bold text-operiva-navy dark:text-white font-display border-b pb-2 mb-8">
+          All Artifacts ({artifacts.length})
+        </h2>
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {artifacts.map((artifact) => (
+            <ArtifactCard key={artifact.id} artifact={artifact} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
