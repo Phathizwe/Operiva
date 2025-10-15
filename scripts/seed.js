@@ -2,12 +2,21 @@
 // This script is designed to be run locally by the user to seed their Firebase Firestore database.
 // It requires the Firebase Admin SDK to be set up.
 
-const admin = require('firebase-admin');
+import admin from 'firebase-admin';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import fs from 'fs';
+
+// Get the current file's directory
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // --- 1. INITIALIZE FIREBASE ADMIN SDK ---
 // IMPORTANT: Replace this with the path to your downloaded service account key file.
 // You can get this from Firebase Console -> Project Settings -> Service Accounts -> Generate new private key.
-const serviceAccount = require('../path/to/your/serviceAccountKey.json'); 
+const serviceAccountPath = join(__dirname, '..', 'config', 'operiva-firebase-adminsdk-fbsvc-9f9eccba15.json');
+// Read and parse the service account file
+const serviceAccount = JSON.parse(fs.readFileSync(serviceAccountPath, 'utf8'));
 
 // Initialize the app
 admin.initializeApp({
