@@ -27,7 +27,8 @@ export default function ArtifactDetail() {
           // Check if lastUpdated is a Firestore timestamp (has toDate method)
           if (fetchedArtifact.lastUpdated && 
               typeof fetchedArtifact.lastUpdated === 'object' && 
-              'toDate' in fetchedArtifact.lastUpdated) {
+              'toDate' in fetchedArtifact.lastUpdated &&
+              typeof fetchedArtifact.lastUpdated.toDate === 'function') {
             fetchedArtifact.lastUpdated = fetchedArtifact.lastUpdated.toDate();
           }
         }
