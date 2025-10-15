@@ -19,8 +19,8 @@ export default function LibraryCard({ library }: LibraryCardProps) {
         return 'bg-amber-alert text-amber-alert ring-amber-alert/20';
       case 'Control':
         return 'bg-charcoal text-charcoal ring-charcoal/20';
-      case 'Capital':
-        return 'bg-red-500 text-red-500 ring-red-500/20'; // Using a standard Tailwind color for Capital
+      case 'Human Human Capital':
+        return 'bg-red-500 text-red-500 ring-red-500/20'; // Using a standard Tailwind color for Human Human Capital
       default:
         return 'bg-gray-500 text-gray-500 ring-gray-500/20';
     }
@@ -47,11 +47,11 @@ export default function LibraryCard({ library }: LibraryCardProps) {
             {library.artifactCount} Artifacts • {library.trackCount} Tracks
           </div>
           <Link
-            to={`/libraries/${library.outcome.toLowerCase()}`}
+            to={`/libraries/${library.outcome.toLowerCase().replace(/\s/g, '-')}`}
             className="text-operiva-blue hover:text-operiva-navy flex items-center"
           >
-            View Library
-            <ArrowRightIcon className="ml-1 h-4 w-4" aria-hidden="true" />
+            View Library <span aria-hidden="true">→</span>
+            
           </Link>
         </div>
       </div>

@@ -1,6 +1,8 @@
 // src/pages/Home.tsx
 import { Link } from 'react-router-dom';
+import TrustSignals from '../components/TrustSignals';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
+import ChangelogPreview from '../components/ChangelogPreview';
 
 // The five core outcomes (features)
 const outcomes = [
@@ -61,8 +63,8 @@ export default function Home() {
                   >
                     Browse Free Templates
                   </Link>
-                  <Link to="/pricing" className="text-base font-semibold leading-6 text-operiva-navy dark:text-light-gray">
-                    See Pricing <span aria-hidden="true">→</span>
+                  <Link to="/pricing" className="text-base font-semibold leading-6 text-operiva-navy dark:text-light-gray hover:text-progress-green">
+                    See Membership Options <span aria-hidden="true">→</span>
                   </Link>
                 </div>
               </div>
@@ -104,6 +106,10 @@ export default function Home() {
         <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white dark:from-gray-900 sm:h-32" />
       </div>
 
+      {/* Trust Signals Section - Added based on research */}
+      <TrustSignals />
+      </div>
+
       {/* Outcomes Section (Features) */}
       <div className="mx-auto mt-24 max-w-7xl px-6 sm:mt-32 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
@@ -141,6 +147,9 @@ export default function Home() {
           </dl>
         </div>
       </div>
+
+      {/* Changelog Preview Section - Added based on research */}
+      <ChangelogPreview />
 
       {/* Trust and CTA Section (Simplified Pricing) */}
       <div className="mx-auto mt-32 max-w-7xl sm:mt-56 sm:px-6 lg:px-8">
