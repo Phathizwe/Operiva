@@ -1,6 +1,6 @@
 // src/components/ArtifactCard.tsx
 import { Link } from 'react-router-dom';
-import { Artifact } from '../types';
+import type { Artifact } from '../types';
 import { DocumentTextIcon, CalculatorIcon, CheckBadgeIcon, BookOpenIcon } from '@heroicons/react/24/outline';
 
 interface ArtifactCardProps {

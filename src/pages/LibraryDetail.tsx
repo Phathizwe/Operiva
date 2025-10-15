@@ -1,11 +1,19 @@
 // src/pages/LibraryDetail.tsx
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Artifact, Track, Outcome } from '../types';
+import type { Artifact, Track, Outcome } from '../types';
 import ArtifactCard from '../components/ArtifactCard';
-import { getArtifactsByOutcome, getFeaturedTracks } from '../services/firestore';
+import { getArtifactsByOutcome } from '../services/firestore';
 
 // Seed data removed. Using live data from Firestore.
+
+// Temporary implementation of getTracksByOutcome until it's properly implemented
+const getTracksByOutcome = async (outcome: Outcome): Promise<Track[]> => {
+  // This is a temporary implementation
+  console.log(`Fetching tracks for outcome: ${outcome}`);
+  // Return an empty array for now
+  return [];
+};
 
 export default function LibraryDetail() {
   const { outcome } = useParams<{ outcome: string }>();
@@ -23,9 +31,7 @@ export default function LibraryDetail() {
       try {
         // In a real app, we would use the Firestore functions
         const fetchedArtifacts = await getArtifactsByOutcome(outcome as Outcome);
-        // NOTE: getFeaturedTracks is a placeholder. We need a getTracksByOutcome function.
-        // For now, we'll use a placeholder function or assume getFeaturedTracks can be filtered.
-        // For this implementation, we'll assume a new function getTracksByOutcome exists in firestore.ts
+        // Using our temporary implementation of getTracksByOutcome
         const fetchedTracks = await getTracksByOutcome(outcome as Outcome); 
 
         setArtifacts(fetchedArtifacts);

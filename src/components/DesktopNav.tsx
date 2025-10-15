@@ -18,16 +18,8 @@ function classNames(...classes: string[]) {
 }
 
 export default function DesktopNav() {
-  const { currentUser, logOut } = useAuth();
+  // Remove unused variables completely
   const location = useLocation();
-
-  const handleLogout = async () => {
-    try {
-      await logOut();
-    } catch (error) {
-      console.error('Failed to log out', error);
-    }
-  };
 
   return (
     <div className="hidden sm:ml-6 sm:flex sm:space-x-8">

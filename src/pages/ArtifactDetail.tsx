@@ -1,7 +1,7 @@
 // src/pages/ArtifactDetail.tsx
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Artifact } from '../types';
+import type { Artifact } from '../types';
 import { getArtifact } from '../services/firestore';
 import { ArrowDownTrayIcon, LockClosedIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
 import { useAuth } from '../context/AuthContext';
@@ -10,7 +10,8 @@ import { useAuth } from '../context/AuthContext';
 
 export default function ArtifactDetail() {
   const { id } = useParams<{ id: string }>();
-  const { currentUser, hasMembership } = useAuth();
+  // Remove unused variable
+  const { hasMembership } = useAuth();
   const [artifact, setArtifact] = useState<Artifact | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -22,8 +23,13 @@ export default function ArtifactDetail() {
       try {
         const fetchedArtifact = await getArtifact(id);
         if (fetchedArtifact) {
-          // Convert Firestore Timestamp to Date object for consistency
-          fetchedArtifact.lastUpdated = fetchedArtifact.lastUpdated.toDate();
+          // Handle Firestore timestamp conversion
+          // Check if lastUpdated is a Firestore timestamp (has toDate method)
+          if (fetchedArtifact.lastUpdated && 
+              typeof fetchedArtifact.lastUpdated === 'object' && 
+              'toDate' in fetchedArtifact.lastUpdated) {
+            fetchedArtifact.lastUpdated = fetchedArtifact.lastUpdated.toDate();
+          }
         }
         setArtifact(fetchedArtifact);
       } catch (err) {
@@ -51,7 +57,9 @@ export default function ArtifactDetail() {
 
   const isFree = !artifact.isPremium;
   const isUnlocked = isFree || hasMembership('Core'); // Core membership unlocks all artifacts in this example
-  const lastUpdatedDate = artifact.lastUpdated.toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' });
+  const lastUpdatedDate = artifact.lastUpdated instanceof Date 
+    ? artifact.lastUpdated.toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' })
+    : 'Unknown date';
 
   return (
     <div className="mx-auto max-w-4xl py-10">

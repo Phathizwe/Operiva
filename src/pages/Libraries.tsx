@@ -1,6 +1,7 @@
 // src/pages/Libraries.tsx
 import { useEffect, useState } from 'react';
-import { Library } from '../types';
+import { Link } from 'react-router-dom';
+import type { Library } from '../types';
 import { getLibraries } from '../services/firestore';
 import LibraryCard from '../components/LibraryCard';
 

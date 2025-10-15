@@ -1,12 +1,29 @@
 // src/pages/TrackDetail.tsx
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Track } from '../types';
+import type { Track } from '../types';
 import TrackStep from '../components/TrackStep';
 import { ClockIcon, ArrowPathIcon, LockClosedIcon } from '@heroicons/react/24/outline';
 import { useAuth } from '../context/AuthContext';
 
 // Seed data removed. Using live data from Firestore.
+
+// Temporary implementation of getTrack until it's properly implemented in firestore.ts
+const getTrack = async (id: string): Promise<Track> => {
+  // This is a temporary implementation that would be replaced with a proper Firestore call
+  console.log(`Fetching track with id: ${id}`);
+  
+  // Return mock data for now
+  return {
+    id,
+    title: 'Reduce DSO in 30 Days',
+    description: 'A 7-step guided track to improve your Days Sales Outstanding metric.',
+    outcome: 'Cash',
+    durationMinutes: 90,
+    artifactIds: ['a1', 'a2', 'a4'],
+    isPremium: true
+  };
+};
 
 // Mock steps data for the track
 const mockSteps = [
