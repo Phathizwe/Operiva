@@ -3,9 +3,8 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 
-// Import only the functions that are actually exported from web-vitals
-import { onCLS, onFCP, onLCP, onTTFB, onINP } from 'web-vitals';
-
+// Import web-vitals using dynamic imports instead
+import('web-vitals').then((vitals) => {
 // Report web vitals performance metrics
 const reportPerformanceMetrics = (metric: any) => {
   // During development, log to console
@@ -24,14 +23,13 @@ const reportPerformanceMetrics = (metric: any) => {
   }
 };
 
-// Use the web-vitals functions directly
-onCLS(reportPerformanceMetrics);
-// onFID is not available in this version, using onINP instead
-// (Interaction to Next Paint is the newer metric replacing FID)
-onINP(reportPerformanceMetrics);
-onFCP(reportPerformanceMetrics);
-onLCP(reportPerformanceMetrics);
-onTTFB(reportPerformanceMetrics);
+// Measure and report web vitals
+if (typeof vitals.getCLS === 'function') vitals.getCLS(reportPerformanceMetrics);
+if (typeof vitals.getFID === 'function') vitals.getFID(reportPerformanceMetrics);
+if (typeof vitals.getFCP === 'function') vitals.getFCP(reportPerformanceMetrics);
+if (typeof vitals.getLCP === 'function') vitals.getLCP(reportPerformanceMetrics);
+if (typeof vitals.getTTFB === 'function') vitals.getTTFB(reportPerformanceMetrics);
+}).catch(err => console.error('Error loading web-vitals:', err));
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

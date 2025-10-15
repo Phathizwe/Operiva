@@ -16,6 +16,7 @@ const ArtifactDetail = lazy(() => import('./pages/ArtifactDetail'));
 const TrackDetail = lazy(() => import('./pages/TrackDetail'));
 const Pricing = lazy(() => import('./pages/Pricing'));
 const ExpertCouncil = lazy(() => import('./pages/ExpertCouncil'));
+const Tracks = lazy(() => import('./pages/Tracks'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Loading fallback component
@@ -58,7 +59,7 @@ function App() {
             <Route path="/about" element={<MainLayout><div>About Page Placeholder</div></MainLayout>} />
             <Route path="/expert-council" element={<MainLayout><ExpertCouncil /></MainLayout>} />
             <Route path="/packs" element={<MainLayout><div>Packs Marketplace Placeholder</div></MainLayout>} />
-            <Route path="/tracks" element={<MainLayout><div>Tracks Overview Placeholder</div></MainLayout>} />
+            <Route path="/tracks" element={<MainLayout><Tracks /></MainLayout>} />
             <Route path="/tracks/:id" element={<MainLayout><TrackDetail /></MainLayout>} />
             <Route path="/profile" element={<MainLayout><div>Profile Page Placeholder</div></MainLayout>} />
             <Route path="/settings" element={<MainLayout><div>Settings Page Placeholder</div></MainLayout>} />
