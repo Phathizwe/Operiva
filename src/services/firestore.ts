@@ -90,6 +90,15 @@ export const getTrack = async (id: string): Promise<Track | null> => {
 };
 
 /**
+ * Fetches all available tracks.
+ * @returns A promise that resolves to an array of Track objects.
+ */
+export const getAllTracks = async (): Promise<Track[]> => {
+  const snapshot = await getDocs(tracksCol);
+  return snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+};
+
+/**
  * Fetches tracks filtered by a specific outcome.
  * @param outcome The core outcome to filter by.
  * @returns A promise that resolves to an array of Track objects.

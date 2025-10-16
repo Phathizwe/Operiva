@@ -43,11 +43,15 @@ export interface Artifact {
   type: ArtifactType;
   sector?: string; // e.g., 'Retail/Spaza', 'Trades'
   version: string;
-  lastUpdated: Date;
+  lastUpdated: Date | any; // Changed to accept Firestore Timestamp
   downloadUrl: string; // Signed URL for the file
   fileType: 'DOCX' | 'XLSX' | 'PDF' | 'GDoc' | 'GSheet';
+  fileFormat?: string; // Display format for the UI
   expertReviewerId?: string; // Link to an Expert document
   isPremium: boolean; // For Pro membership or Packs
+  previewImageUrl?: string; // URL for preview image
+  benefits?: string[]; // List of benefits
+  usageInstructions?: string; // Instructions for using the artifact
 }
 
 // 4. Track (The Guided Sequence)
@@ -70,4 +74,3 @@ export interface Library {
   artifactCount: number;
   trackCount: number;
 }
-

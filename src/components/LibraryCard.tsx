@@ -1,7 +1,7 @@
 // src/components/LibraryCard.tsx
 import { Link } from 'react-router-dom';
 import type { Library } from '../types';
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
+// Removed unused import: ArrowRightIcon
 
 interface LibraryCardProps {
   library: Library;

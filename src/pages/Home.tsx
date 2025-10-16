@@ -108,7 +108,6 @@ export default function Home() {
 
       {/* Trust Signals Section - Added based on research */}
       <TrustSignals />
-      </div>
 
       {/* Outcomes Section (Features) */}
       <div className="mx-auto mt-24 max-w-7xl px-6 sm:mt-32 lg:px-8">
