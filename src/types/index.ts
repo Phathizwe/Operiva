@@ -45,7 +45,7 @@ export interface Artifact {
   version: string;
   lastUpdated: Date | any; // Changed to accept Firestore Timestamp
   downloadUrl: string; // Signed URL for the file
-  fileType: 'DOCX' | 'XLSX' | 'PDF' | 'GDoc' | 'GSheet';
+  fileType: 'DOCX' | 'XLSX' | 'PDF' | 'GDoc' | 'GSheet' | 'ZIP';
   fileFormat?: string; // Display format for the UI
   expertReviewerId?: string; // Link to an Expert document
   isPremium: boolean; // For Pro membership or Packs

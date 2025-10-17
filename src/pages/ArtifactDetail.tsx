@@ -80,10 +80,14 @@ export default function ArtifactDetail() {
                   Premium Content
                 </button>
               ) : (
-                <button className="flex items-center px-4 py-2 bg-white text-operiva-navy rounded-md hover:bg-operiva-light">
+                <a 
+                  href={artifact.downloadUrl} 
+                  download
+                  className="flex items-center px-4 py-2 bg-white text-operiva-navy rounded-md hover:bg-operiva-light"
+                >
                   <ArrowDownTrayIcon className="h-5 w-5 mr-2" />
                   Download
-                </button>
+                </a>
               )}
             </div>
           </div>
