@@ -15,19 +15,34 @@ export default function LibraryDetail() {
   const [artifactsError, setArtifactsError] = useState<string | null>(null);
   const [tracksError, setTracksError] = useState<string | null>(null);
 
-  const libraryTitle = outcome ? outcome.charAt(0).toUpperCase() + outcome.slice(1) : 'Library';
+  // Create a display-friendly title from the URL parameter
+  const libraryTitle = outcome 
+    ? outcome.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ')
+    : 'Library';
 
   useEffect(() => {
     const fetchContent = async () => {
       if (!outcome) return;
 
-      // Define valid outcomes for type safety
-      const validOutcomes: Outcome[] = ['Cash', 'Compliance', 'Customers', 'Control', 'Human Capital'];
+      // Define valid outcomes for type safety - make sure to include all values from the Outcome type
+      const validOutcomes: Outcome[] = ['Cash', 'Compliance', 'Customers', 'Control', 'Human Capital', 'Strategy'];
       
-      // Normalize the outcome parameter to match our expected format (first letter uppercase, rest lowercase)
-      const normalizedOutcome = outcome.charAt(0).toUpperCase() + outcome.slice(1).toLowerCase();
+      // Create a mapping between URL-friendly versions and actual Outcome values
+      const outcomeMapping: Record<string, Outcome> = {
+        'cash': 'Cash',
+        'compliance': 'Compliance',
+        'customers': 'Customers',
+        'control': 'Control',
+        'human-capital': 'Human Capital',
+        'humancapital': 'Human Capital',
+        'human': 'Human Capital', // Handle partial matches
+        'strategy': 'Strategy'
+      };
       
-      if (!validOutcomes.includes(normalizedOutcome as Outcome)) {
+      // Normalize the outcome parameter to handle hyphenated values
+      const normalizedOutcome = outcomeMapping[outcome.toLowerCase()];
+      
+      if (!normalizedOutcome || !validOutcomes.includes(normalizedOutcome)) {
         setError(`Invalid library: ${outcome}`);
         setLoading(false);
         return;
@@ -41,12 +56,12 @@ export default function LibraryDetail() {
       // Use the normalized outcome for fetching data
       try {
         const [fetchedArtifacts, fetchedTracks] = await Promise.all([
-          getArtifactsByOutcome(normalizedOutcome as Outcome).catch(err => {
+          getArtifactsByOutcome(normalizedOutcome).catch(err => {
             console.error(`Failed to fetch ${libraryTitle} artifacts:`, err);
             setArtifactsError(`Failed to load artifacts for the ${libraryTitle} Library.`);
             return [];
           }),
-          getTracksByOutcome(normalizedOutcome as Outcome).catch(err => {
+          getTracksByOutcome(normalizedOutcome).catch(err => {
             console.error(`Failed to fetch ${libraryTitle} tracks:`, err);
             setTracksError(`Failed to load tracks for the ${libraryTitle} Library.`);
             return [];
