@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import TrustSignals from '../components/TrustSignals';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 import ChangelogPreview from '../components/ChangelogPreview';
+import FeaturedProduct from '../components/FeaturedProduct';
 
 // The five core outcomes (features)
 const outcomes = [
@@ -146,6 +147,9 @@ export default function Home() {
           </dl>
         </div>
       </div>
+
+      {/* Featured Product Section - Business Model Canvas */}
+      <FeaturedProduct />
 
       {/* Changelog Preview Section - Added based on research */}
       <ChangelogPreview />

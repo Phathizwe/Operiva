@@ -19,8 +19,10 @@ export default function LibraryCard({ library }: LibraryCardProps) {
         return 'bg-amber-alert text-amber-alert ring-amber-alert/20';
       case 'Control':
         return 'bg-charcoal text-charcoal ring-charcoal/20';
-      case 'Human Human Capital':
-        return 'bg-red-500 text-red-500 ring-red-500/20'; // Using a standard Tailwind color for Human Human Capital
+      case 'Human Capital':
+        return 'bg-gray-600 text-gray-600 ring-gray-600/20'; // Using a standard Tailwind color for Human Capital
+      case 'Strategy':
+        return 'bg-purple-600 text-purple-600 ring-purple-600/20'; // Purple for Strategy
       default:
         return 'bg-gray-500 text-gray-500 ring-gray-500/20';
     }

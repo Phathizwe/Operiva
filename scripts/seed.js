@@ -34,6 +34,7 @@ const libraries = [
   { id: 'customers', outcome: 'Customers', title: 'Customers & Growth', description: 'Agile marketing playbooks, sales scripts, and digital strategy guides to attract, convert, and retain profitable customers in a competitive market.', artifactCount: 15, trackCount: 3 },
   { id: 'control', outcome: 'Control', title: 'Operations & Control', description: 'Resilience kits for load shedding, SOP templates, and supply chain management tools to navigate logistical bottlenecks and maintain business continuity.', artifactCount: 10, trackCount: 2 },
   { id: 'human-capital', outcome: 'Human Capital', title: 'Human Capital & Leadership', description: 'Tools and guides for owner-manager development, talent retention, and building organizational capabilities, addressing the "owner-manager bottleneck".', artifactCount: 8, trackCount: 2 },
+  { id: 'strategy', outcome: 'Strategy', title: 'Business Strategy & Planning', description: 'Strategic frameworks and planning tools to design, validate, and evolve your business model, ensuring long-term viability and competitive positioning.', artifactCount: 5, trackCount: 2 },
 ];
 
 // --- ARTIFACTS (Expanded with research-backed content) ---
@@ -72,6 +73,13 @@ const artifacts = [
   { id: 'h3', title: 'Basic Performance Review Template', description: 'A simple template for conducting effective performance reviews and development planning.', outcome: 'Human Capital', type: 'Template', version: 'v1.0', lastUpdated: new Date(), downloadUrl: 'https://operiva.com/downloads/h3.docx', fileType: 'DOCX', isPremium: true },
   { id: 'h4', title: 'Delegation and Time Management Guide', description: 'A guide for owner-managers to free up time from day-to-day tasks for strategic activities.', outcome: 'Human Capital', type: 'Guide', version: 'v1.0', lastUpdated: new Date(), downloadUrl: 'https://operiva.com/downloads/h4.pdf', fileType: 'PDF', isPremium: true },
   { id: 'h5', title: 'Succession Planning Framework', description: 'A framework for micro-enterprises to plan for the long-term viability beyond the current owner-manager.', outcome: 'Human Capital', type: 'Guide', version: 'v1.0', lastUpdated: new Date(), downloadUrl: 'https://operiva.com/downloads/h5.pdf', fileType: 'PDF', isPremium: true },
+
+  // BUSINESS STRATEGY & PLANNING (Focus: Strategic Frameworks, Business Model Design)
+  { id: 's1', title: 'Business Model Canvas (SA Edition)', description: 'The flagship strategic planning tool adapted for South African SMMEs, with local examples and a step-by-step guide to design and validate your business model.', outcome: 'Strategy', type: 'Template', version: 'v1.0', lastUpdated: new Date(), downloadUrl: 'https://operiva.com/downloads/s1.pdf', fileType: 'PDF', isPremium: false },
+  { id: 's2', title: 'SWOT Analysis Template', description: 'A structured template to assess your Strengths, Weaknesses, Opportunities, and Threats in the current market environment.', outcome: 'Strategy', type: 'Template', version: 'v1.0', lastUpdated: new Date(), downloadUrl: 'https://operiva.com/downloads/s2.docx', fileType: 'DOCX', isPremium: false },
+  { id: 's3', title: 'Annual Strategic Planning Guide', description: 'A comprehensive guide to facilitate your annual strategic planning session, with worksheets and facilitation tips.', outcome: 'Strategy', type: 'Guide', version: 'v1.0', lastUpdated: new Date(), downloadUrl: 'https://operiva.com/downloads/s3.pdf', fileType: 'PDF', isPremium: true },
+  { id: 's4', title: 'Competitive Analysis Framework', description: 'A template to map your competitors and identify your unique competitive advantage.', outcome: 'Strategy', type: 'Template', version: 'v1.0', lastUpdated: new Date(), downloadUrl: 'https://operiva.com/downloads/s4.xlsx', fileType: 'XLSX', isPremium: true },
+  { id: 's5', title: 'Market Entry Playbook', description: 'A step-by-step playbook for entering a new market segment or geographic area.', outcome: 'Strategy', type: 'Guide', version: 'v1.0', lastUpdated: new Date(), downloadUrl: 'https://operiva.com/downloads/s5.pdf', fileType: 'PDF', isPremium: true },
 ];
 
 // --- TRACKS (Expanded and linked to new artifacts) ---
@@ -97,6 +105,10 @@ const tracks = [
   // HUMAN CAPITAL & LEADERSHIP TRACKS
   { id: 't11', title: 'Owner-Manager Development Plan', description: 'A 7-step track to assess your leadership skills and create a personal development roadmap.', outcome: 'Human Capital', durationMinutes: 120, artifactIds: ['h1', 'h4'], isPremium: false },
   { id: 't12', title: 'Talent Retention Quickstart', description: 'A 3-step track to improve employee onboarding and performance management.', outcome: 'Human Capital', durationMinutes: 60, artifactIds: ['h2', 'h3'], isPremium: true },
+
+  // BUSINESS STRATEGY & PLANNING TRACKS
+  { id: 't13', title: 'Business Model Design Sprint', description: 'A 90-minute guided track to complete your Business Model Canvas and validate your core assumptions.', outcome: 'Strategy', durationMinutes: 90, artifactIds: ['s1', 's2'], isPremium: false },
+  { id: 't14', title: 'Annual Strategy Refresh', description: 'A comprehensive 3-hour track to conduct your annual strategic planning session using the SWOT and competitive analysis frameworks.', outcome: 'Strategy', durationMinutes: 180, artifactIds: ['s2', 's3', 's4'], isPremium: true },
 ];
 
 // --- 3. SEEDING FUNCTION ---
