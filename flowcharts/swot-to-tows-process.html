@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWOT to TOWS Process Flowchart</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            background: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .flowchart {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="flowchart">
+        <svg width="1000" height="700" viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg">
+            <!-- Title -->
+            <text x="500" y="40" font-size="32" font-weight="bold" fill="#1C2A4A" text-anchor="middle" font-family="Segoe UI, sans-serif">
+                From SWOT Analysis to Actionable Strategies
+            </text>
+            
+            <!-- Step 1: Complete SWOT -->
+            <g id="step1">
+                <rect x="350" y="80" width="300" height="100" rx="12" fill="#1C2A4A" stroke="#27AE60" stroke-width="3"/>
+                <circle cx="400" cy="110" r="20" fill="#27AE60"/>
+                <text x="400" y="118" font-size="18" font-weight="bold" fill="white" text-anchor="middle">1</text>
+                <text x="500" y="120" font-size="20" font-weight="bold" fill="white" text-anchor="middle">Complete SWOT Analysis</text>
+                <text x="500" y="150" font-size="14" fill="#E0E0E0" text-anchor="middle">Answer guided questions for each quadrant</text>
+            </g>
+            
+            <!-- Arrow -->
+            <path d="M 500 180 L 500 220" stroke="#27AE60" stroke-width="4" fill="none" marker-end="url(#arrowhead)"/>
+            
+            <!-- SWOT Matrix -->
+            <g id="swot-matrix">
+                <!-- Title -->
+                <text x="500" y="250" font-size="18" font-weight="bold" fill="#1C2A4A" text-anchor="middle">SWOT Matrix</text>
+                
+                <!-- Strengths (Top Left) -->
+                <rect x="200" y="270" width="250" height="120" rx="8" fill="#27AE60" fill-opacity="0.2" stroke="#27AE60" stroke-width="2"/>
+                <text x="325" y="295" font-size="16" font-weight="bold" fill="#1C2A4A" text-anchor="middle">Strengths (S)</text>
+                <text x="215" y="320" font-size="12" fill="#333">• Internal advantages</text>
+                <text x="215" y="340" font-size="12" fill="#333">• What you do well</text>
+                <text x="215" y="360" font-size="12" fill="#333">• Unique resources</text>
+                
+                <!-- Weaknesses (Top Right) -->
+                <rect x="550" y="270" width="250" height="120" rx="8" fill="#E74C3C" fill-opacity="0.2" stroke="#E74C3C" stroke-width="2"/>
+                <text x="675" y="295" font-size="16" font-weight="bold" fill="#1C2A4A" text-anchor="middle">Weaknesses (W)</text>
+                <text x="565" y="320" font-size="12" fill="#333">• Internal disadvantages</text>
+                <text x="565" y="340" font-size="12" fill="#333">• What needs improvement</text>
+                <text x="565" y="360" font-size="12" fill="#333">• Resource gaps</text>
+                
+                <!-- Opportunities (Bottom Left) -->
+                <rect x="200" y="410" width="250" height="120" rx="8" fill="#3498DB" fill-opacity="0.2" stroke="#3498DB" stroke-width="2"/>
+                <text x="325" y="435" font-size="16" font-weight="bold" fill="#1C2A4A" text-anchor="middle">Opportunities (O)</text>
+                <text x="215" y="460" font-size="12" fill="#333">• External favorable trends</text>
+                <text x="215" y="480" font-size="12" fill="#333">• Market gaps</text>
+                <text x="215" y="500" font-size="12" fill="#333">• Growth potential</text>
+                
+                <!-- Threats (Bottom Right) -->
+                <rect x="550" y="410" width="250" height="120" rx="8" fill="#F39C12" fill-opacity="0.2" stroke="#F39C12" stroke-width="2"/>
+                <text x="675" y="435" font-size="16" font-weight="bold" fill="#1C2A4A" text-anchor="middle">Threats (T)</text>
+                <text x="565" y="460" font-size="12" fill="#333">• External challenges</text>
+                <text x="565" y="480" font-size="12" fill="#333">• Competitive pressure</text>
+                <text x="565" y="500" font-size="12" fill="#333">• Market risks</text>
+            </g>
+            
+            <!-- Arrow -->
+            <path d="M 500 530 L 500 570" stroke="#27AE60" stroke-width="4" fill="none" marker-end="url(#arrowhead)"/>
+            
+            <!-- Step 2: Generate TOWS Strategies -->
+            <g id="step2">
+                <rect x="100" y="570" width="800" height="100" rx="12" fill="#1C2A4A" stroke="#27AE60" stroke-width="3"/>
+                <circle cx="150" cy="600" r="20" fill="#27AE60"/>
+                <text x="150" y="608" font-size="18" font-weight="bold" fill="white" text-anchor="middle">2</text>
+                <text x="500" y="605" font-size="20" font-weight="bold" fill="white" text-anchor="middle">Generate TOWS Action Matrix</text>
+                <text x="500" y="635" font-size="14" fill="#E0E0E0" text-anchor="middle">Combine SWOT elements to create 4 types of strategies</text>
+            </g>
+            
+            <!-- TOWS Strategies (Below) -->
+            <g id="tows-strategies" transform="translate(0, 50)">
+                <!-- S-O: Attack -->
+                <rect x="50" y="630" width="200" height="60" rx="8" fill="#27AE60" stroke="#1C2A4A" stroke-width="2"/>
+                <text x="150" y="655" font-size="14" font-weight="bold" fill="white" text-anchor="middle">S-O: ATTACK</text>
+                <text x="150" y="675" font-size="11" fill="white" text-anchor="middle">Use strengths to seize opportunities</text>
+                
+                <!-- W-O: Improve -->
+                <rect x="270" y="630" width="200" height="60" rx="8" fill="#3498DB" stroke="#1C2A4A" stroke-width="2"/>
+                <text x="370" y="655" font-size="14" font-weight="bold" fill="white" text-anchor="middle">W-O: IMPROVE</text>
+                <text x="370" y="675" font-size="11" fill="white" text-anchor="middle">Fix weaknesses to capture opportunities</text>
+                
+                <!-- S-T: Defend -->
+                <rect x="490" y="630" width="200" height="60" rx="8" fill="#F39C12" stroke="#1C2A4A" stroke-width="2"/>
+                <text x="590" y="655" font-size="14" font-weight="bold" fill="white" text-anchor="middle">S-T: DEFEND</text>
+                <text x="590" y="675" font-size="11" fill="white" text-anchor="middle">Use strengths to counter threats</text>
+                
+                <!-- W-T: Survive -->
+                <rect x="710" y="630" width="200" height="60" rx="8" fill="#E74C3C" stroke="#1C2A4A" stroke-width="2"/>
+                <text x="810" y="655" font-size="14" font-weight="bold" fill="white" text-anchor="middle">W-T: SURVIVE</text>
+                <text x="810" y="675" font-size="11" fill="white" text-anchor="middle">Minimize weaknesses and avoid threats</text>
+            </g>
+            
+            <!-- Arrow marker definition -->
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                    <polygon points="0 0, 10 3, 0 6" fill="#27AE60" />
+                </marker>
+            </defs>
+        </svg>
+    </div>
+</body>
+</html>
+
