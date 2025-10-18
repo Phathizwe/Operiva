@@ -15,6 +15,10 @@ This guide is structured into four key phases:
 3.  **Phase 3: How to Win?** (Go-to-Market Strategy)
 4.  **Phase 4: How to Launch?** (Execution and Iteration)
 
+![The 4-Phase Market Entry Process](../flowcharts/market-entry-4-phase-process.png)
+
+*Figure 1: The 4-Phase Market Entry Process - A systematic approach to entering new markets in South Africa*
+
 Let's begin.
 
 ---

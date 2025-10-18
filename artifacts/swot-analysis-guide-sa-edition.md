@@ -15,6 +15,10 @@ This guide introduces a more powerful, action-oriented approach that combines th
 > **What is a TOWS Matrix?**
 > The TOWS Matrix was developed by Heinz Weihrich to take SWOT analysis a step further. Instead of just listing factors, it forces you to combine them to create four distinct types of strategies. This turns your analysis into a concrete action plan [1].
 
+![From SWOT Analysis to Actionable Strategies](../flowcharts/swot-to-tows-process.png)
+
+*Figure 1: The SWOT to TOWS Process - Transform analysis into four types of actionable strategies*
+
 ---
 
 ## 2. Step 1: Guided SWOT Analysis (The Questions)
