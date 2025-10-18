@@ -27,8 +27,8 @@ This core activity is influenced by:
 - **Barriers to Entry:** Your competitive moat
 - **Key Activities:** Your division of labor
 
-![CHAT Framework Diagram](https://i.imgur.com/example.png)  
-*Figure 1: The 7 Components of the CHAT Framework*
+![CHAT Framework Diagram](../flowcharts/chat-framework-7-components.png)  
+*Figure 1: The 7 Interconnected Components of the CHAT Framework*
 
 Let's explore each component in detail.
 
