@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Flow Forecasting Process</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            background: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .flowchart {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="flowchart">
+        <svg width="1000" height="650" viewBox="0 0 1000 650" xmlns="http://www.w3.org/2000/svg">
+            <!-- Title -->
+            <text x="500" y="40" font-size="32" font-weight="bold" fill="#1C2A4A" text-anchor="middle" font-family="Segoe UI, sans-serif">
+                3-Month Cash Flow Forecasting Process
+            </text>
+            
+            <!-- Subtitle -->
+            <text x="500" y="70" font-size="16" fill="#666" text-anchor="middle" font-style="italic">
+                Never run out of money - forecast and plan ahead
+            </text>
+            
+            <!-- Step 1: Gather Data -->
+            <g id="step1">
+                <rect x="100" y="100" width="800" height="80" rx="12" fill="#1C2A4A" stroke="#27AE60" stroke-width="3"/>
+                <circle cx="150" cy="125" r="20" fill="#27AE60"/>
+                <text x="150" y="133" font-size="18" font-weight="bold" fill="white" text-anchor="middle">1</text>
+                <text x="500" y="135" font-size="20" font-weight="bold" fill="white" text-anchor="middle">Gather Historical Data</text>
+                <text x="500" y="160" font-size="13" fill="#E0E0E0" text-anchor="middle">Collect last 3-6 months of bank statements, invoices, and expenses</text>
+            </g>
+            
+            <path d="M 500 180 L 500 220" stroke="#27AE60" stroke-width="4" marker-end="url(#arrowhead)"/>
+            
+            <!-- Step 2: Forecast Income -->
+            <g id="step2">
+                <rect x="100" y="220" width="380" height="120" rx="12" fill="#27AE60" fill-opacity="0.2" stroke="#27AE60" stroke-width="3"/>
+                <circle cx="150" cy="245" r="20" fill="#27AE60"/>
+                <text x="150" y="253" font-size="18" font-weight="bold" fill="white" text-anchor="middle">2</text>
+                <text x="290" y="270" font-size="18" font-weight="bold" fill="#1C2A4A" text-anchor="middle">Forecast Income (Inflows)</text>
+                <text x="150" y="300" font-size="12" fill="#333" text-anchor="start">• Expected sales revenue</text>
+                <text x="150" y="320" font-size="12" fill="#333" text-anchor="start">• Customer payments (invoices)</text>
+            </g>
+            
+            <!-- Step 3: Forecast Expenses -->
+            <g id="step3">
+                <rect x="520" y="220" width="380" height="120" rx="12" fill="#E74C3C" fill-opacity="0.2" stroke="#E74C3C" stroke-width="3"/>
+                <circle cx="570" cy="245" r="20" fill="#E74C3C"/>
+                <text x="570" y="253" font-size="18" font-weight="bold" fill="white" text-anchor="middle">3</text>
+                <text x="710" y="270" font-size="18" font-weight="bold" fill="#1C2A4A" text-anchor="middle">Forecast Expenses (Outflows)</text>
+                <text x="570" y="300" font-size="12" fill="#333" text-anchor="start">• Fixed costs (rent, salaries)</text>
+                <text x="570" y="320" font-size="12" fill="#333" text-anchor="start">• Variable costs (stock, utilities)</text>
+            </g>
+            
+            <path d="M 290 340 L 290 380 L 500 380 L 500 400" stroke="#27AE60" stroke-width="3" fill="none"/>
+            <path d="M 710 340 L 710 380 L 500 380 L 500 400" stroke="#E74C3C" stroke-width="3" marker-end="url(#arrowhead)"/>
+            
+            <!-- Step 4: Calculate Net Cash Flow -->
+            <g id="step4">
+                <rect x="200" y="400" width="600" height="80" rx="12" fill="#3498DB" stroke="#1C2A4A" stroke-width="3"/>
+                <circle cx="250" cy="425" r="20" fill="#1C2A4A"/>
+                <text x="250" y="433" font-size="18" font-weight="bold" fill="white" text-anchor="middle">4</text>
+                <text x="500" y="435" font-size="20" font-weight="bold" fill="white" text-anchor="middle">Calculate Net Cash Flow</text>
+                <text x="500" y="460" font-size="14" fill="white" text-anchor="middle">Net Cash Flow = Income - Expenses (for each month)</text>
+            </g>
+            
+            <path d="M 500 480 L 500 520" stroke="#3498DB" stroke-width="4" marker-end="url(#arrowhead)"/>
+            
+            <!-- Step 5: Identify Cash Gaps -->
+            <g id="step5">
+                <rect x="100" y="520" width="800" height="80" rx="12" fill="#F39C12" stroke="#1C2A4A" stroke-width="3"/>
+                <circle cx="150" cy="545" r="20" fill="#1C2A4A"/>
+                <text x="150" y="553" font-size="18" font-weight="bold" fill="white" text-anchor="middle">5</text>
+                <text x="500" y="555" font-size="20" font-weight="bold" fill="white" text-anchor="middle">Identify Cash Gaps & Take Action</text>
+                <text x="500" y="580" font-size="13" fill="white" text-anchor="middle">If any month shows negative cash flow → Reduce expenses, delay payments, or secure funding</text>
+            </g>
+            
+            <!-- Warning Box -->
+            <rect x="100" y="620" width="800" height="20" rx="10" fill="#E74C3C"/>
+            <text x="500" y="635" font-size="13" font-weight="bold" fill="white" text-anchor="middle">⚠️ Add 20% contingency for SA variables (loadshedding, fuel, inflation)</text>
+            
+            <!-- Arrow marker definition -->
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                    <polygon points="0 0, 10 3, 0 6" fill="#27AE60" />
+                </marker>
+            </defs>
+        </svg>
+    </div>
+</body>
+</html>
+

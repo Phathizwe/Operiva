@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load Shedding Business Continuity Plan</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            background: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .flowchart {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="flowchart">
+        <svg width="1100" height="750" viewBox="0 0 1100 750" xmlns="http://www.w3.org/2000/svg">
+            <!-- Title -->
+            <text x="550" y="40" font-size="32" font-weight="bold" fill="#1C2A4A" text-anchor="middle" font-family="Segoe UI, sans-serif">
+                Load Shedding Business Continuity Plan
+            </text>
+            
+            <!-- Subtitle -->
+            <text x="550" y="70" font-size="16" fill="#666" text-anchor="middle" font-style="italic">
+                Minimize disruption from power outages with a 4-phase approach
+            </text>
+            
+            <!-- Phase 1: Assess Impact -->
+            <g id="phase1">
+                <rect x="50" y="110" width="480" height="140" rx="12" fill="#E74C3C" fill-opacity="0.15" stroke="#E74C3C" stroke-width="3"/>
+                <circle cx="100" cy="135" r="22" fill="#E74C3C"/>
+                <text x="100" y="144" font-size="18" font-weight="bold" fill="white" text-anchor="middle">1</text>
+                <text x="290" y="145" font-size="20" font-weight="bold" fill="#1C2A4A" text-anchor="middle">ASSESS IMPACT</text>
+                <text x="80" y="180" font-size="13" fill="#333" text-anchor="start">• Map critical operations (sales, production)</text>
+                <text x="80" y="200" font-size="13" fill="#333" text-anchor="start">• Identify power-dependent systems</text>
+                <text x="80" y="220" font-size="13" fill="#333" text-anchor="start">• Calculate revenue loss per hour of outage</text>
+                <text x="80" y="240" font-size="12" fill="#E74C3C" font-weight="bold" text-anchor="start">Output: Impact Assessment Matrix</text>
+            </g>
+            
+            <path d="M 290 250 L 290 280" stroke="#27AE60" stroke-width="4" marker-end="url(#arrowhead)"/>
+            
+            <!-- Phase 2: Backup Solutions -->
+            <g id="phase2">
+                <rect x="50" y="280" width="480" height="160" rx="12" fill="#F39C12" fill-opacity="0.15" stroke="#F39C12" stroke-width="3"/>
+                <circle cx="100" cy="305" r="22" fill="#F39C12"/>
+                <text x="100" y="314" font-size="18" font-weight="bold" fill="white" text-anchor="middle">2</text>
+                <text x="290" y="315" font-size="20" font-weight="bold" fill="#1C2A4A" text-anchor="middle">IMPLEMENT BACKUP SOLUTIONS</text>
+                <text x="80" y="350" font-size="13" fill="#333" text-anchor="start">• Power: Inverter, generator, solar (prioritize by ROI)</text>
+                <text x="80" y="370" font-size="13" fill="#333" text-anchor="start">• Connectivity: Mobile hotspot, backup SIM cards</text>
+                <text x="80" y="390" font-size="13" fill="#333" text-anchor="start">• Data: Cloud backup, offline mode for critical apps</text>
+                <text x="80" y="410" font-size="13" fill="#333" text-anchor="start">• Communication: WhatsApp groups, SMS alerts</text>
+                <text x="80" y="430" font-size="12" fill="#F39C12" font-weight="bold" text-anchor="start">Output: Backup Infrastructure Plan</text>
+            </g>
+            
+            <path d="M 290 440 L 290 470" stroke="#27AE60" stroke-width="4" marker-end="url(#arrowhead)"/>
+            
+            <!-- Phase 3: Operational Protocols -->
+            <g id="phase3">
+                <rect x="570" y="110" width="480" height="160" rx="12" fill="#3498DB" fill-opacity="0.15" stroke="#3498DB" stroke-width="3"/>
+                <circle cx="620" cy="135" r="22" fill="#3498DB"/>
+                <text x="620" y="144" font-size="18" font-weight="bold" fill="white" text-anchor="middle">3</text>
+                <text x="810" y="145" font-size="20" font-weight="bold" fill="#1C2A4A" text-anchor="middle">CREATE OPERATIONAL PROTOCOLS</text>
+                <text x="600" y="180" font-size="13" fill="#333" text-anchor="start">• Pre-outage: Save work, charge devices, notify customers</text>
+                <text x="600" y="200" font-size="13" fill="#333" text-anchor="start">• During outage: Switch to backup, manual processes</text>
+                <text x="600" y="220" font-size="13" fill="#333" text-anchor="start">• Post-outage: Resume operations, reconcile data</text>
+                <text x="600" y="240" font-size="13" fill="#333" text-anchor="start">• Assign roles: Who does what during load shedding?</text>
+                <text x="600" y="260" font-size="12" fill="#3498DB" font-weight="bold" text-anchor="start">Output: Load Shedding Playbook (1-pager)</text>
+            </g>
+            
+            <path d="M 810 270 L 810 300" stroke="#27AE60" stroke-width="4" marker-end="url(#arrowhead)"/>
+            
+            <!-- Phase 4: Monitor & Adjust -->
+            <g id="phase4">
+                <rect x="570" y="300" width="480" height="140" rx="12" fill="#27AE60" fill-opacity="0.15" stroke="#27AE60" stroke-width="3"/>
+                <circle cx="620" cy="325" r="22" fill="#27AE60"/>
+                <text x="620" y="334" font-size="18" font-weight="bold" fill="white" text-anchor="middle">4</text>
+                <text x="810" y="335" font-size="20" font-weight="bold" fill="#1C2A4A" text-anchor="middle">MONITOR & ADJUST</text>
+                <text x="600" y="370" font-size="13" fill="#333" text-anchor="start">• Track load shedding schedule (EskomSePush app)</text>
+                <text x="600" y="390" font-size="13" fill="#333" text-anchor="start">• Measure actual impact vs. forecast</text>
+                <text x="600" y="410" font-size="13" fill="#333" text-anchor="start">• Update plan quarterly based on lessons learned</text>
+                <text x="600" y="430" font-size="12" fill="#27AE60" font-weight="bold" text-anchor="start">Output: Continuous Improvement Log</text>
+            </g>
+            
+            <!-- Central Connection -->
+            <path d="M 530 360 L 570 360" stroke="#27AE60" stroke-width="4" marker-end="url(#arrowhead)"/>
+            
+            <!-- Key Actions Box -->
+            <rect x="50" y="470" width="1000" height="120" rx="12" fill="#1C2A4A" stroke="#27AE60" stroke-width="3"/>
+            <text x="550" y="500" font-size="18" font-weight="bold" fill="white" text-anchor="middle">🔑 Key Actions by Load Shedding Stage</text>
+            
+            <g id="stage-actions">
+                <rect x="80" y="520" width="300" height="55" rx="8" fill="#27AE60" fill-opacity="0.3"/>
+                <text x="230" y="540" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Stage 1-2 (Low Impact)</text>
+                <text x="230" y="560" font-size="11" fill="white" text-anchor="middle">→ Charge devices, notify customers,</text>
+                <text x="230" y="575" font-size="11" fill="white" text-anchor="middle">reschedule non-critical meetings</text>
+                
+                <rect x="400" y="520" width="300" height="55" rx="8" fill="#F39C12" fill-opacity="0.3"/>
+                <text x="550" y="540" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Stage 3-4 (Medium Impact)</text>
+                <text x="550" y="560" font-size="11" fill="white" text-anchor="middle">→ Activate backup power, shift to</text>
+                <text x="550" y="575" font-size="11" fill="white" text-anchor="middle">mobile operations, reduce hours</text>
+                
+                <rect x="720" y="520" width="300" height="55" rx="8" fill="#E74C3C" fill-opacity="0.3"/>
+                <text x="870" y="540" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Stage 5-6 (High Impact)</text>
+                <text x="870" y="560" font-size="11" fill="white" text-anchor="middle">→ Implement manual processes,</text>
+                <text x="870" y="575" font-size="11" fill="white" text-anchor="middle">remote work, temporary closure</text>
+            </g>
+            
+            <!-- Pro Tip -->
+            <rect x="50" y="610" width="1000" height="40" rx="10" fill="#27AE60"/>
+            <text x="550" y="635" font-size="14" font-weight="bold" fill="white" text-anchor="middle">💡 Pro Tip: Budget 20% extra for load shedding costs (backup power, lost productivity, customer compensation)</text>
+            
+            <!-- SA Context -->
+            <rect x="50" y="670" width="1000" height="60" rx="10" fill="#F5F5F5" stroke="#CCC" stroke-width="2"/>
+            <text x="550" y="695" font-size="13" font-weight="bold" fill="#1C2A4A" text-anchor="middle">🇿🇦 SA Context: Load shedding is unpredictable and can change with 30 minutes' notice</text>
+            <text x="550" y="715" font-size="11" fill="#666" text-anchor="middle">Download EskomSePush app, join local business WhatsApp groups, and build relationships with neighbors for resource sharing (generators, WiFi).</text>
+            
+            <!-- Arrow marker definition -->
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                    <polygon points="0 0, 10 3, 0 6" fill="#27AE60" />
+                </marker>
+            </defs>
+        </svg>
+    </div>
+</body>
+</html>
+

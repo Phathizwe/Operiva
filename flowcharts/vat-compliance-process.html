@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAT Compliance Process</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            background: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .flowchart {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="flowchart">
+        <svg width="1000" height="700" viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg">
+            <!-- Title -->
+            <text x="500" y="40" font-size="32" font-weight="bold" fill="#1C2A4A" text-anchor="middle" font-family="Segoe UI, sans-serif">
+                VAT Compliance Process for SA SMMEs
+            </text>
+            
+            <!-- Subtitle -->
+            <text x="500" y="70" font-size="16" fill="#666" text-anchor="middle" font-style="italic">
+                Stay compliant with SARS - Registration, filing, and payment workflow
+            </text>
+            
+            <!-- Step 1: Check Threshold -->
+            <g id="step1">
+                <rect x="100" y="100" width="800" height="70" rx="12" fill="#1C2A4A" stroke="#27AE60" stroke-width="3"/>
+                <circle cx="150" cy="120" r="20" fill="#27AE60"/>
+                <text x="150" y="128" font-size="18" font-weight="bold" fill="white" text-anchor="middle">1</text>
+                <text x="500" y="130" font-size="20" font-weight="bold" fill="white" text-anchor="middle">Check VAT Threshold</text>
+                <text x="500" y="155" font-size="13" fill="#E0E0E0" text-anchor="middle">Turnover &gt; R1 million in 12 months? → Must register. Voluntary if below threshold.</text>
+            </g>
+            
+            <path d="M 500 170 L 500 200" stroke="#27AE60" stroke-width="4" marker-end="url(#arrowhead)"/>
+            
+            <!-- Step 2: Register with SARS -->
+            <g id="step2">
+                <rect x="100" y="200" width="800" height="90" rx="12" fill="#3498DB" fill-opacity="0.2" stroke="#3498DB" stroke-width="3"/>
+                <circle cx="150" cy="220" r="20" fill="#3498DB"/>
+                <text x="150" y="228" font-size="18" font-weight="bold" fill="white" text-anchor="middle">2</text>
+                <text x="500" y="235" font-size="20" font-weight="bold" fill="#1C2A4A" text-anchor="middle">Register for VAT with SARS</text>
+                <text x="150" y="265" font-size="12" fill="#333" text-anchor="start">• Online: eFiling (www.sarsefiling.co.za) or in-person at SARS branch</text>
+                <text x="150" y="283" font-size="12" fill="#333" text-anchor="start">• Documents: ID, proof of address, bank statement, CIPC registration certificate</text>
+            </g>
+            
+            <path d="M 500 290 L 500 320" stroke="#3498DB" stroke-width="4" marker-end="url(#arrowhead)"/>
+            
+            <!-- Step 3: Collect VAT -->
+            <g id="step3">
+                <rect x="100" y="320" width="380" height="100" rx="12" fill="#27AE60" fill-opacity="0.2" stroke="#27AE60" stroke-width="3"/>
+                <circle cx="150" cy="340" r="20" fill="#27AE60"/>
+                <text x="150" y="348" font-size="18" font-weight="bold" fill="white" text-anchor="middle">3</text>
+                <text x="290" y="355" font-size="18" font-weight="bold" fill="#1C2A4A" text-anchor="middle">Collect VAT (Output Tax)</text>
+                <text x="150" y="385" font-size="12" fill="#333" text-anchor="start">• Add 15% VAT to all sales</text>
+                <text x="150" y="403" font-size="12" fill="#333" text-anchor="start">• Issue VAT invoices with VAT number</text>
+            </g>
+            
+            <!-- Step 4: Pay VAT -->
+            <g id="step4">
+                <rect x="520" y="320" width="380" height="100" rx="12" fill="#E74C3C" fill-opacity="0.2" stroke="#E74C3C" stroke-width="3"/>
+                <circle cx="570" cy="340" r="20" fill="#E74C3C"/>
+                <text x="570" y="348" font-size="18" font-weight="bold" fill="white" text-anchor="middle">4</text>
+                <text x="710" y="355" font-size="18" font-weight="bold" fill="#1C2A4A" text-anchor="middle">Pay VAT (Input Tax)</text>
+                <text x="570" y="385" font-size="12" fill="#333" text-anchor="start">• Claim 15% VAT on business expenses</text>
+                <text x="570" y="403" font-size="12" fill="#333" text-anchor="start">• Keep all VAT invoices from suppliers</text>
+            </g>
+            
+            <path d="M 290 420 L 290 450 L 500 450 L 500 470" stroke="#27AE60" stroke-width="3" fill="none"/>
+            <path d="M 710 420 L 710 450 L 500 450 L 500 470" stroke="#E74C3C" stroke-width="3" marker-end="url(#arrowhead)"/>
+            
+            <!-- Step 5: Calculate Net VAT -->
+            <g id="step5">
+                <rect x="150" y="470" width="700" height="80" rx="12" fill="#F39C12" stroke="#1C2A4A" stroke-width="3"/>
+                <circle cx="200" cy="490" r="20" fill="#1C2A4A"/>
+                <text x="200" y="498" font-size="18" font-weight="bold" fill="white" text-anchor="middle">5</text>
+                <text x="500" y="505" font-size="20" font-weight="bold" fill="white" text-anchor="middle">Calculate Net VAT Owed</text>
+                <text x="500" y="530" font-size="14" fill="white" text-anchor="middle">Net VAT = Output Tax (collected) - Input Tax (paid)</text>
+            </g>
+            
+            <path d="M 500 550 L 500 580" stroke="#F39C12" stroke-width="4" marker-end="url(#arrowhead)"/>
+            
+            <!-- Step 6: File VAT Return -->
+            <g id="step6">
+                <rect x="100" y="580" width="800" height="90" rx="12" fill="#9B59B6" stroke="#1C2A4A" stroke-width="3"/>
+                <circle cx="150" cy="600" r="20" fill="#1C2A4A"/>
+                <text x="150" y="608" font-size="18" font-weight="bold" fill="white" text-anchor="middle">6</text>
+                <text x="500" y="615" font-size="20" font-weight="bold" fill="white" text-anchor="middle">File VAT Return & Pay SARS</text>
+                <text x="150" y="645" font-size="13" fill="white" text-anchor="start">• Deadline: 25th of the month following the tax period (monthly or bi-monthly)</text>
+                <text x="150" y="663" font-size="13" fill="white" text-anchor="start">• Submit via eFiling + pay net VAT owed (or claim refund if input &gt; output)</text>
+            </g>
+            
+            <!-- Warning Box -->
+            <rect x="100" y="685" width="800" height="10" rx="5" fill="#E74C3C"/>
+            
+            <!-- Arrow marker definition -->
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                    <polygon points="0 0, 10 3, 0 6" fill="#27AE60" />
+                </marker>
+            </defs>
+        </svg>
+    </div>
+</body>
+</html>
+

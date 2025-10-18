@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Levels of Work: 4-Level Hierarchy</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            background: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .flowchart {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="flowchart">
+        <svg width="1100" height="700" viewBox="0 0 1100 700" xmlns="http://www.w3.org/2000/svg">
+            <!-- Title -->
+            <text x="550" y="40" font-size="32" font-weight="bold" fill="#1C2A4A" text-anchor="middle" font-family="Segoe UI, sans-serif">
+                Levels of Work: 4-Level Organizational Hierarchy
+            </text>
+            
+            <!-- Subtitle -->
+            <text x="550" y="70" font-size="16" fill="#666" text-anchor="middle" font-style="italic">
+                Break the owner-manager bottleneck with clear delegation levels
+            </text>
+            
+            <!-- Level 4: Strategize (Top - Narrowest) -->
+            <g id="level4">
+                <polygon points="550,100 700,100 650,200 450,200" fill="#1C2A4A" stroke="#27AE60" stroke-width="3"/>
+                <circle cx="550" cy="90" r="20" fill="#27AE60"/>
+                <text x="550" y="99" font-size="18" font-weight="bold" fill="white" text-anchor="middle">4</text>
+                <text x="550" y="145" font-size="22" font-weight="bold" fill="white" text-anchor="middle">STRATEGIZE</text>
+                <text x="550" y="170" font-size="13" fill="#E0E0E0" text-anchor="middle">Set direction & vision</text>
+                <text x="550" y="190" font-size="12" fill="#27AE60" text-anchor="middle">Owner / CEO</text>
+            </g>
+            
+            <!-- Level 3: Manage (Second - Wider) -->
+            <g id="level3">
+                <polygon points="550,200 800,200 750,320 350,320" fill="#3498DB" stroke="#27AE60" stroke-width="3"/>
+                <circle cx="520" cy="210" r="20" fill="#27AE60"/>
+                <text x="520" y="219" font-size="18" font-weight="bold" fill="white" text-anchor="middle">3</text>
+                <text x="550" y="255" font-size="22" font-weight="bold" fill="white" text-anchor="middle">MANAGE</text>
+                <text x="550" y="280" font-size="13" fill="white" text-anchor="middle">Plan, organize, allocate resources</text>
+                <text x="550" y="300" font-size="12" fill="#E0E0E0" text-anchor="middle">Department Managers / 2iC</text>
+            </g>
+            
+            <!-- Level 2: Supervise (Third - Even Wider) -->
+            <g id="level2">
+                <polygon points="550,320 900,320 850,460 250,460" fill="#F39C12" stroke="#27AE60" stroke-width="3"/>
+                <circle cx="490" cy="330" r="20" fill="#27AE60"/>
+                <text x="490" y="339" font-size="18" font-weight="bold" fill="white" text-anchor="middle">2</text>
+                <text x="550" y="380" font-size="22" font-weight="bold" fill="white" text-anchor="middle">SUPERVISE</text>
+                <text x="550" y="405" font-size="13" fill="white" text-anchor="middle">Coordinate, monitor, quality control</text>
+                <text x="550" y="430" font-size="12" fill="#333" text-anchor="middle">Team Leaders / Supervisors</text>
+            </g>
+            
+            <!-- Level 1: Do (Bottom - Widest) -->
+            <g id="level1">
+                <polygon points="550,460 1000,460 950,600 150,600" fill="#27AE60" stroke="#1C2A4A" stroke-width="3"/>
+                <circle cx="460" cy="470" r="20" fill="#1C2A4A"/>
+                <text x="460" y="479" font-size="18" font-weight="bold" fill="white" text-anchor="middle">1</text>
+                <text x="550" y="520" font-size="22" font-weight="bold" fill="white" text-anchor="middle">DO</text>
+                <text x="550" y="545" font-size="13" fill="white" text-anchor="middle">Execute tasks, deliver products/services</text>
+                <text x="550" y="570" font-size="12" fill="#1C2A4A" text-anchor="middle">Front-line Staff / Operators</text>
+            </g>
+            
+            <!-- Time Horizon Labels (Right Side) -->
+            <g id="time-horizons">
+                <text x="950" y="150" font-size="12" font-weight="bold" fill="#666">Time Horizon:</text>
+                <text x="950" y="170" font-size="11" fill="#666">2-5 years</text>
+                
+                <text x="950" y="260" font-size="11" fill="#666">6-12 months</text>
+                
+                <text x="950" y="390" font-size="11" fill="#666">1-3 months</text>
+                
+                <text x="950" y="530" font-size="11" fill="#666">Daily/Weekly</text>
+            </g>
+            
+            <!-- Decision Authority Labels (Left Side) -->
+            <g id="decision-authority">
+                <text x="50" y="150" font-size="12" font-weight="bold" fill="#666" text-anchor="start">Decision Authority:</text>
+                <text x="50" y="170" font-size="11" fill="#666" text-anchor="start">Strategic</text>
+                
+                <text x="50" y="260" font-size="11" fill="#666" text-anchor="start">Tactical</text>
+                
+                <text x="50" y="390" font-size="11" fill="#666" text-anchor="start">Operational</text>
+                
+                <text x="50" y="530" font-size="11" fill="#666" text-anchor="start">Task-level</text>
+            </g>
+            
+            <!-- Key Insight Box -->
+            <rect x="150" y="630" width="800" height="50" rx="8" fill="#F5F5F5" stroke="#CCC" stroke-width="2"/>
+            <text x="550" y="655" font-size="13" font-weight="bold" fill="#1C2A4A" text-anchor="middle">💡 Key Insight: Each level requires different thinking and decision-making capabilities</text>
+            <text x="550" y="672" font-size="11" fill="#666" text-anchor="middle">The owner-manager bottleneck occurs when you try to do all 4 levels yourself. Delegate levels 1-2, train level 3, focus on level 4.</text>
+        </svg>
+    </div>
+</body>
+</html>
+
