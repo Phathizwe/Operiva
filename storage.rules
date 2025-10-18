@@ -1,0 +1,18 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Allow public read access to all files
+    // This is safe for artifact downloads which are meant to be publicly accessible
+    match /{allPaths=**} {
+      allow read: if true;
+      allow write: if false; // Only allow writes from admin SDK or authenticated users
+    }
+    
+    // User-specific uploads (if needed in the future)
+    match /users/{userId}/{allPaths=**} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}
+
