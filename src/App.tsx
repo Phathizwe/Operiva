@@ -20,6 +20,8 @@ const ExpertCouncil = lazy(() => import('./pages/ExpertCouncil'));
 const Tracks = lazy(() => import('./pages/Tracks'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const Packs = lazy(() => import('./pages/Packs'));
+const PaymentSuccess = lazy(() => import('./pages/PaymentSuccess'));
+const PaymentCancel = lazy(() => import('./pages/PaymentCancel'));
 
 // Loading fallback component
 const LoadingFallback = () => (
@@ -58,6 +60,8 @@ function App() {
             {/* Redirect to home if path is empty */}
             <Route path="/features" element={<Navigate to="/libraries" replace />} />
             <Route path="/pricing" element={<MainLayout><Pricing /></MainLayout>} />
+            <Route path="/payment/success" element={<MainLayout><PaymentSuccess /></MainLayout>} />
+            <Route path="/payment/cancel" element={<MainLayout><PaymentCancel /></MainLayout>} />
             <Route path="/changelog" element={<MainLayout><div>Changelog Page Placeholder</div></MainLayout>} />
             <Route path="/about" element={<MainLayout><div>About Page Placeholder</div></MainLayout>} />
             <Route path="/expert-council" element={<MainLayout><ExpertCouncil /></MainLayout>} />
