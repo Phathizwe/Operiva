@@ -1,13 +1,17 @@
 // src/pages/Pricing.tsx
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CheckIcon } from '@heroicons/react/20/solid';
+import { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { redirectToCheckout } from '../services/payment';
 
 const tiers = [
   {
     name: 'Free Tier',
     id: 'tier-free',
-    href: '/signup',
+    tierKey: 'free',
     price: 'R0',
+    priceValue: 0,
     description: 'Lead-gen to conversion. Limited access to sample templates and compliance calendar.',
     features: [
       'Access to 5 Sample Artifacts',
@@ -22,8 +26,9 @@ const tiers = [
   {
     name: 'Core Membership',
     id: 'tier-core',
-    href: '/signup',
+    tierKey: 'core',
     price: 'R199',
+    priceValue: 199,
     description: 'Full access to all Libraries, Tracks, and quarterly regulatory updates.',
     features: [
       'Everything in Free',
@@ -39,8 +44,9 @@ const tiers = [
   {
     name: 'Pro Membership',
     id: 'tier-pro',
-    href: '/signup',
+    tierKey: 'pro',
     price: 'R499',
+    priceValue: 499,
     description: 'For serious operators needing policy suites, funding kits, and priority support.',
     features: [
       'Everything in Core',
@@ -56,6 +62,39 @@ const tiers = [
 ];
 
 export default function Pricing() {
+  const { currentUser } = useAuth();
+  const navigate = useNavigate();
+  const [processingTier, setProcessingTier] = useState<string | null>(null);
+
+  const handleSubscribe = async (tier: typeof tiers[0]) => {
+    // Free tier - just sign up
+    if (tier.priceValue === 0) {
+      navigate('/signup');
+      return;
+    }
+
+    // Check if user is logged in
+    if (!currentUser) {
+      navigate('/signup');
+      return;
+    }
+
+    // Process payment
+    setProcessingTier(tier.id);
+    try {
+      await redirectToCheckout({
+        amount: tier.priceValue,
+        tier: tier.tierKey,
+        userId: currentUser.uid,
+        email: currentUser.email || '',
+      });
+    } catch (error) {
+      console.error('Payment error:', error);
+      alert('Failed to process payment. Please try again.');
+      setProcessingTier(null);
+    }
+  };
+
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
       <div className="mx-auto max-w-4xl text-center">
@@ -67,7 +106,6 @@ export default function Pricing() {
       <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-400 text-center">
         Choose the plan that fits your business needs. All prices are per month, billed annually. Monthly options available.
       </p>
-
       <div className="isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-y-8 sm:mt-20 lg:max-w-4xl lg:grid-cols-3 lg:gap-x-8">
         {tiers.map((tier) => (
           <div
@@ -94,23 +132,24 @@ export default function Pricing() {
               <span className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">{tier.price}</span>
               <span className="text-sm font-semibold leading-6 text-gray-600 dark:text-gray-400">/month</span>
             </p>
-            <Link
-              to={tier.href}
+            <button
+              onClick={() => handleSubscribe(tier)}
+              disabled={processingTier === tier.id}
               aria-describedby={tier.id}
               className={`
-                mt-6 block rounded-lg py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+                mt-6 block w-full rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-50 disabled:cursor-not-allowed
                 ${tier.featured
-                  ? 'bg-operiva-blue text-white shadow-sm hover:bg-operiva-navy focus-visible:outline-operiva-blue'
-                  : 'bg-white dark:bg-gray-800 text-operiva-blue ring-1 ring-inset ring-operiva-blue hover:bg-operiva-blue/10 focus-visible:outline-operiva-blue'
+                  ? 'bg-operiva-blue text-white shadow-sm hover:bg-operiva-blue/90 focus-visible:outline-operiva-blue'
+                  : 'bg-white dark:bg-gray-600 text-operiva-blue dark:text-white ring-1 ring-inset ring-operiva-blue/20 hover:ring-operiva-blue/30'
                 }
               `}
             >
-              {tier.cta}
-            </Link>
+              {processingTier === tier.id ? 'Processing...' : tier.cta}
+            </button>
             <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-600 dark:text-gray-400 xl:mt-10">
               {tier.features.map((feature) => (
                 <li key={feature} className="flex gap-x-3">
-                  <CheckIcon className="h-6 w-5 flex-none text-progress-green" aria-hidden="true" />
+                  <CheckIcon className="h-6 w-5 flex-none text-operiva-blue" aria-hidden="true" />
                   {feature}
                 </li>
               ))}
@@ -118,21 +157,19 @@ export default function Pricing() {
           </div>
         ))}
       </div>
-
-      <div className="mt-20 text-center">
-        <h3 className="text-2xl font-bold text-operiva-navy dark:text-white font-display">
-          Enterprise & ESD Program Licenses
-        </h3>
-        <p className="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-          For multi-seat access, cohort tracking, and white-label options for sponsors, DFIs, and incubators.
+      <div className="mt-16 text-center">
+        <p className="text-sm text-gray-600 dark:text-gray-400">
+          {currentUser ? (
+            'Click on a plan to subscribe'
+          ) : (
+            <>
+              Need to <Link to="/login" className="text-operiva-blue hover:underline">log in</Link> or{' '}
+              <Link to="/signup" className="text-operiva-blue hover:underline">create an account</Link> first
+            </>
+          )}
         </p>
-        <Link
-          to="/contact"
-          className="mt-6 inline-flex items-center rounded-lg bg-operiva-navy px-6 py-3 text-base font-semibold text-white shadow-md hover:bg-operiva-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-operiva-navy"
-        >
-          Contact Sales for Enterprise Pricing
-        </Link>
       </div>
     </div>
   );
 }
+
