@@ -1,6 +1,4 @@
 // src/services/payment.ts
-import { auth } from '../config/firebase';
-
 export interface CheckoutData {
   amount: number;
   tier: string;
@@ -66,4 +64,3 @@ export const getYocoPublicKey = async (): Promise<string> => {
     throw error;
   }
 };
-

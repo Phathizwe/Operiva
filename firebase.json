@@ -1,7 +1,9 @@
 {
   "functions": {
     "source": "functions",
-    "runtime": "nodejs18"
+    "runtime": "nodejs18",
+    "codebase": "default",
+    "gen": 2
   },
   "hosting": {
     "public": "dist",
@@ -28,4 +30,3 @@
     "rules": "storage.rules"
   }
 }
-
