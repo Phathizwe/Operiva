@@ -1,4 +1,4 @@
-import * as functions from 'firebase-functions';
+import {onRequest} from 'firebase-functions/v2/https';
 import * as admin from 'firebase-admin';
 import express from 'express';
 import cors from 'cors';
@@ -10,13 +10,12 @@ const app = express();
 app.use(cors({ origin: true }));
 app.use(express.json());
 
-// Get Yoco configuration from Firebase Functions config
+// Get Yoco configuration from environment variables
 const getYocoConfig = () => {
-  const config = functions.config().yoco;
   return {
-    secretKey: config?.secret_key || process.env.YOCO_SECRET_KEY,
-    publicKey: config?.public_key || process.env.YOCO_PUBLIC_KEY,
-    webhookSecret: config?.webhook_secret || process.env.YOCO_WEBHOOK_SECRET,
+    secretKey: process.env.YOCO_SECRET_KEY,
+    publicKey: process.env.YOCO_PUBLIC_KEY,
+    webhookSecret: process.env.YOCO_WEBHOOK_SECRET,
   };
 };
 
@@ -153,6 +152,6 @@ async function handlePaymentFailure(event: any) {
   }
 }
 
-// Export the Express app as a Firebase Function
-export const api = functions.https.onRequest(app);
+// Export the Express app as a Firebase Function (v2)
+export const api = onRequest(app);
 
