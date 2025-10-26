@@ -42,7 +42,7 @@ export default function ToolCard({ tool, categoryColor }: ToolCardProps) {
   // If artifactId exists, make it a link
   if (tool.artifactId) {
     return (
-      <Link to={`/artifact/${tool.artifactId}`} className="block">
+      <Link to={`/artifacts/${tool.artifactId}`} className="block">
         {cardContent}
       </Link>
     );
