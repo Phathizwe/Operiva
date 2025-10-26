@@ -14,11 +14,11 @@ export const pyramidLayers: Layer[] = [
         title: 'Planning Your Business',
         color: '#1E40AF', // Navy blue
         tools: [
-          { code: 'PB-01', name: 'Business Model Canvas', isPremium: false },
-          { code: 'PB-02', name: 'CHAT Business Framework', isPremium: false },
-          { code: 'PB-03', name: 'Setting Goals', isPremium: false },
-          { code: 'PB-04', name: 'Competitor Analysis', isPremium: false },
-          { code: 'PB-05', name: 'Starting Your Business', isPremium: false },
+          { code: 'PB-01', name: 'Business Model Canvas', isPremium: false, artifactId: 's1' },
+          { code: 'PB-02', name: 'CHAT Business Framework', isPremium: false, artifactId: 's6' },
+          { code: 'PB-03', name: 'SWOT Analysis Pack', isPremium: false, artifactId: 's2' },
+          { code: 'PB-04', name: 'Competitor Analysis', isPremium: true, artifactId: 's4' },
+          { code: 'PB-05', name: 'Market Entry Playbook', isPremium: true, artifactId: 's5' },
         ],
       },
     ],
@@ -36,12 +36,12 @@ export const pyramidLayers: Layer[] = [
         title: 'Customers & Sales',
         color: '#F97316', // Orange
         tools: [
-          { code: 'CS-01', name: 'Marketing Playbook', isPremium: false },
-          { code: 'CS-02', name: 'Sales Scripts', isPremium: false },
-          { code: 'CS-03', name: 'Social Media Guide', isPremium: false },
-          { code: 'CS-04', name: 'Customer Service', isPremium: false },
-          { code: 'CS-05', name: 'Keeping Customers', isPremium: false },
-          { code: 'CS-06', name: 'Pricing Psychology', isPremium: true },
+          { code: 'CS-01', name: 'Social Media Content Calendar', isPremium: false, artifactId: 'g1' },
+          { code: 'CS-02', name: 'Sales Pitch Deck', isPremium: true, artifactId: 'g4' },
+          { code: 'CS-03', name: 'Go-to-Market Strategy', isPremium: false, artifactId: 'gjwSvIBv9R7HMuYMuW5C' },
+          { code: 'CS-04', name: 'Customer Journey Map', isPremium: true, artifactId: 'g2' },
+          { code: 'CS-05', name: 'Customer Retention Survey', isPremium: false, artifactId: 'g5' },
+          { code: 'CS-06', name: 'Google My Business Guide', isPremium: false, artifactId: 'g3' },
         ],
       },
       {
@@ -49,11 +49,11 @@ export const pyramidLayers: Layer[] = [
         title: 'Going Digital',
         color: '#06B6D4', // Cyan
         tools: [
-          { code: 'GD-01', name: 'Website Basics', isPremium: false },
-          { code: 'GD-02', name: 'Selling Online', isPremium: false },
-          { code: 'GD-03', name: 'WhatsApp for Business', isPremium: false },
-          { code: 'GD-04', name: 'Facebook & Instagram', isPremium: false },
-          { code: 'GD-05', name: 'Google My Business', isPremium: false },
+          { code: 'GD-01', name: 'Digital Tool Integration', isPremium: true, artifactId: 'o4' },
+          { code: 'GD-02', name: 'Social Media Calendar', isPremium: false, artifactId: 'g1' },
+          { code: 'GD-03', name: 'Google My Business', isPremium: false, artifactId: 'g3' },
+          { code: 'GD-04', name: 'Go-to-Market Strategy', isPremium: false, artifactId: 'gjwSvIBv9R7HMuYMuW5C' },
+          { code: 'GD-05', name: 'Customer Journey Mapping', isPremium: true, artifactId: 'g2' },
         ],
       },
       {
@@ -61,11 +61,11 @@ export const pyramidLayers: Layer[] = [
         title: 'People & Leadership',
         color: '#8B5CF6', // Purple
         tools: [
-          { code: 'PL-01', name: 'Hiring the Right People', isPremium: false },
-          { code: 'PL-02', name: 'Managing Your Team', isPremium: false },
-          { code: 'PL-03', name: 'Performance Reviews', isPremium: false },
-          { code: 'PL-04', name: 'Owner Skills Assessment', isPremium: false },
-          { code: 'PL-05', name: 'Building Company Culture', isPremium: true },
+          { code: 'PL-01', name: 'Employee Onboarding', isPremium: false, artifactId: 'h2' },
+          { code: 'PL-02', name: 'Performance Review Template', isPremium: true, artifactId: 'h3' },
+          { code: 'PL-03', name: 'Owner Skills Assessment', isPremium: false, artifactId: 'h1' },
+          { code: 'PL-04', name: 'Time Management Guide', isPremium: true, artifactId: 'h4' },
+          { code: 'PL-05', name: 'Succession Planning', isPremium: true, artifactId: 'h5' },
         ],
       },
     ],
@@ -83,11 +83,11 @@ export const pyramidLayers: Layer[] = [
         title: 'Daily Operations',
         color: '#374151', // Dark gray
         tools: [
-          { code: 'DO-01', name: 'Standard Procedures', isPremium: false },
-          { code: 'DO-02', name: 'Load Shedding Solutions', isPremium: false },
-          { code: 'DO-03', name: 'Quality Control', isPremium: false },
-          { code: 'DO-04', name: 'Safety Checklist', isPremium: false },
-          { code: 'DO-05', name: 'Time Management', isPremium: false },
+          { code: 'DO-01', name: 'Load Shedding Plan', isPremium: false, artifactId: 'o1' },
+          { code: 'DO-02', name: 'Inventory Management SOP', isPremium: true, artifactId: 'o2' },
+          { code: 'DO-03', name: 'Quality Control Checklist', isPremium: false, artifactId: 'o5' },
+          { code: 'DO-04', name: 'Supplier Scorecard', isPremium: true, artifactId: 'o3' },
+          { code: 'DO-05', name: 'Digital Tool Integration', isPremium: true, artifactId: 'o4' },
         ],
       },
       {
@@ -95,10 +95,10 @@ export const pyramidLayers: Layer[] = [
         title: 'Suppliers & Stock',
         color: '#F59E0B', // Amber
         tools: [
-          { code: 'SS-01', name: 'Supplier Agreements', isPremium: false },
-          { code: 'SS-02', name: 'Stock Management', isPremium: false },
-          { code: 'SS-03', name: 'Ordering System', isPremium: false },
-          { code: 'SS-04', name: 'Delivery Tracking', isPremium: false },
+          { code: 'SS-01', name: 'Supplier Scorecard', isPremium: true, artifactId: 'o3' },
+          { code: 'SS-02', name: 'Inventory Management', isPremium: true, artifactId: 'o2' },
+          { code: 'SS-03', name: 'Quality Control', isPremium: false, artifactId: 'o5' },
+          { code: 'SS-04', name: 'Load Shedding Plan', isPremium: false, artifactId: 'o1' },
         ],
       },
     ],
@@ -116,11 +116,11 @@ export const pyramidLayers: Layer[] = [
         title: 'Money & Funding',
         color: '#10B981', // Bright green
         tools: [
-          { code: 'MF-01', name: 'Cash Flow Forecasting', isPremium: false },
-          { code: 'MF-02', name: 'Pricing Strategy', isPremium: false },
-          { code: 'MF-03', name: 'Cost Control Workbook', isPremium: false },
-          { code: 'MF-04', name: 'Getting a Business Loan', isPremium: true },
-          { code: 'MF-05', name: 'Invoice Templates', isPremium: false },
+          { code: 'MF-01', name: 'Cash Flow Forecasting', isPremium: false, artifactId: 'c1' },
+          { code: 'MF-02', name: 'Pricing Strategy Calculator', isPremium: false, artifactId: 'c2' },
+          { code: 'MF-03', name: 'Budget vs Actual Tracker', isPremium: true, artifactId: 'c5' },
+          { code: 'MF-04', name: 'Breakeven Analysis', isPremium: true, artifactId: 'c3' },
+          { code: 'MF-05', name: 'Invoice Template Pack', isPremium: false, artifactId: 'c4' },
         ],
       },
       {
@@ -128,11 +128,11 @@ export const pyramidLayers: Layer[] = [
         title: 'Legal & Paperwork',
         color: '#2563EB', // Royal blue
         tools: [
-          { code: 'LP-01', name: 'POPIA Compliance', isPremium: false },
-          { code: 'LP-02', name: 'CIPC Annual Returns', isPremium: false },
-          { code: 'LP-03', name: 'SARS Tax Guide', isPremium: false },
-          { code: 'LP-04', name: 'Contracts & Agreements', isPremium: true },
-          { code: 'LP-05', name: 'Risk Management', isPremium: false },
+          { code: 'LP-01', name: 'POPIA Compliance Toolkit', isPremium: true, artifactId: 'l2' },
+          { code: 'LP-02', name: 'CIPC Annual Returns', isPremium: false, artifactId: 'l1' },
+          { code: 'LP-03', name: 'SARS Tax Guide', isPremium: false, artifactId: 'l3' },
+          { code: 'LP-04', name: 'Employment Contract', isPremium: true, artifactId: 'l4' },
+          { code: 'LP-05', name: 'Risk Assessment', isPremium: false, artifactId: 'l5' },
         ],
       },
     ],
