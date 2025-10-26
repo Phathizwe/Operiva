@@ -14,7 +14,7 @@ interface CategorySectionProps {
   isExpanded?: boolean;
 }
 
-export default function CategorySection({ category, isExpanded = false }: CategorySectionProps) {
+export default function CategorySection({ category, isExpanded = true }: CategorySectionProps) {
   const [expanded, setExpanded] = useState(isExpanded);
 
   return (
