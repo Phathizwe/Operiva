@@ -10,7 +10,7 @@ const Home = lazy(() => import('./pages/Home'));
 const Login = lazy(() => import('./pages/Login'));
 const Signup = lazy(() => import('./pages/Signup'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
-const Libraries = lazy(() => import('./pages/Libraries'));
+const Libraries = lazy(() => import('./pages/LibrariesNew'));
 const LibraryDetail = lazy(() => import('./pages/LibraryDetail'));
 const ArtifactDetail = lazy(() => import('./pages/ArtifactDetail'));
 const ArtifactDetailDev = lazy(() => import('./pages/ArtifactDetail.dev'));
