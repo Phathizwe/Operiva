@@ -1,5 +1,6 @@
 // src/components/pyramid/CategorySection.tsx
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import ToolCard, { type Tool } from './ToolCard';
 
 export interface Category {
@@ -23,25 +24,31 @@ export default function CategorySection({ category, isExpanded = true }: Categor
       style={{ backgroundColor: category.color }}
     >
       {/* Category header */}
-      <button
-        onClick={() => setExpanded(!expanded)}
-        className="w-full px-4 py-3 flex items-center justify-between text-white hover:bg-black/10 transition-colors"
-      >
-        <div className="flex items-center gap-2">
+      <div className="flex items-center">
+        <Link 
+          to={`/libraries/category/${category.id}`}
+          className="flex-1 px-4 py-3 flex items-center gap-2 text-white hover:bg-black/10 transition-colors"
+        >
           <h3 className="text-lg font-bold uppercase tracking-wide">{category.title}</h3>
           <span className="text-sm font-medium bg-white/20 px-2 py-0.5 rounded-full">
             {category.tools.length} tools
           </span>
-        </div>
-        <svg
-          className={`w-5 h-5 transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+        </Link>
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="px-4 py-3 text-white hover:bg-black/10 transition-colors"
+          aria-label={expanded ? 'Collapse section' : 'Expand section'}
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
+          <svg
+            className={`w-5 h-5 transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
 
       {/* Tools grid - shown when expanded */}
       {expanded && (

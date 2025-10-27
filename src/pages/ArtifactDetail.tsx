@@ -5,6 +5,7 @@ import type { Artifact } from '../types';
 import { getArtifact } from '../services/firestore';
 import { ArrowDownTrayIcon, LockClosedIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
 import { useAuth } from '../context/AuthContext';
+import { getCategoryByArtifactId } from '../components/pyramid/categoryMapping';
 
 // Seed data removed. Using live data from Firestore.
 
@@ -57,9 +58,25 @@ export default function ArtifactDetail() {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
       <div className="mb-8">
-        <Link to={`/libraries/${artifact.outcome.toLowerCase()}`} className="text-operiva-blue hover:text-operiva-navy">
-          &larr; Back to {artifact.outcome} Library
-        </Link>
+        {(() => {
+          // Check if this artifact belongs to a pyramid category
+          const pyramidCategory = getCategoryByArtifactId(artifact.id);
+          
+          if (pyramidCategory) {
+            return (
+              <Link to={`/libraries/category/${pyramidCategory.id}`} className="text-operiva-blue hover:text-operiva-navy">
+                &larr; Back to {pyramidCategory.title}
+              </Link>
+            );
+          }
+          
+          // Fallback to outcome-based library
+          return (
+            <Link to={`/libraries/${artifact.outcome.toLowerCase()}`} className="text-operiva-blue hover:text-operiva-navy">
+              &larr; Back to {artifact.outcome} Library
+            </Link>
+          );
+        })()}
       </div>
 
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">

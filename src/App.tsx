@@ -12,6 +12,7 @@ const Signup = lazy(() => import('./pages/Signup'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Libraries = lazy(() => import('./pages/LibrariesNew'));
 const LibraryDetail = lazy(() => import('./pages/LibraryDetail'));
+const CategoryDetail = lazy(() => import('./pages/CategoryDetail'));
 const ArtifactDetail = lazy(() => import('./pages/ArtifactDetail'));
 const ArtifactDetailDev = lazy(() => import('./pages/ArtifactDetail.dev'));
 const TrackDetail = lazy(() => import('./pages/TrackDetail'));
@@ -39,6 +40,7 @@ function App() {
             {/* Public routes */}
             <Route path="/" element={<Home />} />
             <Route path="/libraries" element={<MainLayout><Libraries /></MainLayout>} />
+            <Route path="/libraries/category/:category" element={<MainLayout><CategoryDetail /></MainLayout>} />
             <Route path="/libraries/:outcome" element={<MainLayout><LibraryDetail /></MainLayout>} />
             <Route path="/artifacts/:id" element={<MainLayout><ArtifactDetail /></MainLayout>} />
             <Route path="/dev/artifacts/:id" element={<MainLayout><ArtifactDetailDev /></MainLayout>} />
