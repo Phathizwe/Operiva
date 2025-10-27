@@ -1,5 +1,6 @@
 // src/components/pyramid/categoryMapping.ts
 // Maps pyramid categories to Firestore outcomes for filtering artifacts
+import { pyramidLayers } from './pyramidData';
 
 export interface CategoryMapping {
   id: string;
@@ -72,9 +73,7 @@ export function getAllCategoryIds(): string[] {
 // Helper function to find category by artifact ID
 // This checks the pyramidData to see which category contains this artifact
 export function getCategoryByArtifactId(artifactId: string): CategoryMapping | undefined {
-  // Import pyramidData dynamically to avoid circular dependency
-  const { pyramidLayers } = require('./pyramidData');
-  
+  // Use the imported pyramidLayers directly
   for (const layer of pyramidLayers) {
     for (const category of layer.categories) {
       const hasArtifact = category.tools.some((tool: any) => tool.artifactId === artifactId);
@@ -86,4 +85,3 @@ export function getCategoryByArtifactId(artifactId: string): CategoryMapping | u
   
   return undefined;
 }
-
